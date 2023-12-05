@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::resource('dashboard', DashboardController::class);
-Route::resource('sidenav', LayoutController::class);
+Route::resource('register', LayoutController::class);
 Route::resource('proyek', ProyekController::class);
 Route::resource('modal', ModalController::class);
 

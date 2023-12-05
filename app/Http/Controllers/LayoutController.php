@@ -11,7 +11,7 @@ class LayoutController extends Controller
      */
     public function index()
     {
-        return view("layouts.sidenav");
+        return view("auth.register");
     }
 
     /**
