@@ -19,7 +19,7 @@ use App\Http\Controllers\ModalController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
 
 Route::resource('dashboard', DashboardController::class);
