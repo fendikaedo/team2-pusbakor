@@ -10,6 +10,8 @@ use App\Http\Controllers\SkalaUsahaController;
 use App\Http\Controllers\KbliController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DesaController;
+use App\Http\Controllers\JenisPerusahaanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ Route::resource('skalausaha', SkalaUsahaController::class);
 Route::resource('kbli', KbliController::class);
 Route::resource('kecamatan', KecamatanController::class);
 Route::resource('desa', DesaController::class);
+Route::resource('jenisperusahaan', JenisPerusahaanController::class);
+
 
 
 
