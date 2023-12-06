@@ -9,7 +9,7 @@ use App\Http\Controllers\ResikoController;
 use App\Http\Controllers\SkalaUsahaController;
 use App\Http\Controllers\KbliController;
 use App\Http\Controllers\KecamatanController;
-use App\Models\Kecamatan;
+use App\Http\Controllers\DesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,8 @@ Route::resource('resiko', ResikoController::class);
 Route::resource('skalausaha', SkalaUsahaController::class);
 Route::resource('kbli', KbliController::class);
 Route::resource('kecamatan', KecamatanController::class);
+Route::resource('desa', DesaController::class);
+
 
 
 
