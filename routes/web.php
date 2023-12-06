@@ -6,6 +6,7 @@ use App\Http\Controllers\ProyekController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ModalController;
 use App\Http\Controllers\ResikoController;
+use App\Http\Controllers\SkalaUsahaController;
 
 
 /*
@@ -28,6 +29,8 @@ Route::resource('register', LayoutController::class);
 Route::resource('proyek', ProyekController::class);
 Route::resource('modal', ModalController::class);
 Route::resource('resiko', ResikoController::class);
+Route::resource('skalausaha', SkalaUsahaController::class);
+
 
 
 

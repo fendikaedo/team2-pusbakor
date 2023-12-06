@@ -82,6 +82,9 @@ class ResikoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $resiko = Resiko::find($id);
+        $resiko->delete();
+
+        return back()->with('success','Resiko Proyek Berhasil Dihapus');
     }
 }
