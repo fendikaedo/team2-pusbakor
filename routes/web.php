@@ -5,6 +5,7 @@ use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\ProyekController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ModalController;
+use App\Http\Controllers\ResikoController;
 
 
 /*
@@ -26,5 +27,7 @@ Route::resource('dashboard', DashboardController::class);
 Route::resource('register', LayoutController::class);
 Route::resource('proyek', ProyekController::class);
 Route::resource('modal', ModalController::class);
+Route::resource('resiko', ResikoController::class);
+
 
 
