@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kbli', function (Blueprint $table) {
             $table->id();
+            $table->integer('kode_kbli');
             $table->string('judul');
             $table->string('pembina');
             $table->timestamps();
