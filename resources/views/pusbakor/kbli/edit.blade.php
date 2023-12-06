@@ -6,7 +6,7 @@
     <a href="{{ route('kbli.index') }}" class="btn btn-primary btn-sm mb-3">Kembali</a>
     <div class="card">
         <div class="card-body p-3">
-            <form action="{{ route('kbli.update') }}" method="POST">
+            <form action="{{ route('kbli.update', $kbli->id) }}" method="POST">
                 @method('put')
                 @csrf
                 <div class="mb-3">
