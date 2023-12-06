@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        PUSBAKOR TEAM 2
+        PUSBAKOR
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -47,7 +47,7 @@
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
                 target="_blank">
                 <img src="{{ asset('img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold">PUSBAKOR TEAM 2</span>
+                <span class="ms-1 font-weight-bold">Dashboard</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -192,7 +192,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{route ('resiko.index')}}">
+                    <a class="nav-link  " href="{{route ('modal.index')}}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -219,7 +219,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{route ('skalausaha.index')}}">
+                    <a class="nav-link  " href="{{route ('modal.index')}}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -588,6 +588,11 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
+                                href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online
+                                Builder</a>
+                        </li>
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
