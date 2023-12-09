@@ -49,15 +49,9 @@
     h1 {
         text-align: center
     }
-
-    thead {
+    tr{
         text-align: center
     }
-
-    tbody {
-        text-align: center
-    }
-
     .card {
         width: 100%;
     }

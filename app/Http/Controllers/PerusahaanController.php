@@ -32,8 +32,8 @@ class PerusahaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nib' => 'required|min:5|max:30',
-            'npwp' => 'required|min:5|max:30',
+            'nib' => 'required|min:5|max:50',
+            'npwp' => 'required|min:5|max:50',
             'nama_perusahaan' => 'required|min:5|max:255',
             'jenis_perusahaan_id' => 'required|min:5|max:30',
 
@@ -74,8 +74,8 @@ class PerusahaanController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nib' => 'required|min:5|max:30',
-            'npwp' => 'required|min:5|max:30',
+            'nib' => 'required|min:5|max:50',
+            'npwp' => 'required|min:5|max:50',
             'nama_perusahaan' => 'required|min:5|max:255',
             'jenis_perusahaan_id' => 'required|min:5|max:30',
 
