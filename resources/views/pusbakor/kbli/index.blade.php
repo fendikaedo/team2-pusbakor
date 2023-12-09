@@ -19,15 +19,15 @@
                     <tbody>
                         @foreach ($kbli as $k)
                             <tr>
-                                <td>{{ $loop->iteration}}</td>
-                                <td>{{ $k ->kode_kbli}}</td>
-                                <td>{{ $k ->judul}}</td>
-                                <td>{{ $k ->pembina}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $k->kode_kbli }}</td>
+                                <td>{{ $k->judul }}</td>
+                                <td>{{ $k->pembina }}</td>
                                 <td>
-                                    <form action="{{route ('kbli.destroy',$k->id)}}" method="POST">
+                                    <form action="{{ route('kbli.destroy', $k->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <a href="kbli/{{$k['id']}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="kbli/{{ $k['id'] }}/edit" class="btn btn-success btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-trash btn-sm">Delete</button>
                                     </form>
                                 </td>
@@ -49,10 +49,6 @@
     }
 
     thead {
-        text-align: center
-    }
-
-    tbody {
         text-align: center
     }
 
