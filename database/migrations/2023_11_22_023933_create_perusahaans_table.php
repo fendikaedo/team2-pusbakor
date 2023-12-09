@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('nib');
             $table->integer('npwp');
             $table->string('nama_perusahaan');
-            $table->string('jenis_perusahaan_id');
+            $table->unsignedBigInteger('jenis_perusahaan_id');
+            $table->foreign('jenis_perusahaan_id')->references('id')->on('jenis_perusahaan')->onDelete('cascade');
             $table->timestamps();
         });
     }

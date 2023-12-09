@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jenis_Perusahaan;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,8 @@ class PerusahaanController extends Controller
      */
     public function index()
     {
-        return view('pusbakor.perusahaan.index')->with([
-            'perusahaan' => Perusahaan::all(),
-        ]);
+        $perusahaan = Perusahaan::all();
+        return view('pusbakor.perusahaan.index',['perusahaan'=>$perusahaan]);
     }
 
     /**
@@ -22,7 +22,8 @@ class PerusahaanController extends Controller
      */
     public function create()
     {
-        //
+        $jenis_perusahaan = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.create', ['jenis_perusahaan' => $jenis_perusahaan]);
     }
 
     /**
@@ -30,7 +31,23 @@ class PerusahaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nib' => 'required|min:5|max:30',
+            'npwp' => 'required|min:5|max:30',
+            'nama_perusahaan' => 'required|min:5|max:255',
+            'jenis_perusahaan_id' => 'required|min:5|max:30',
+
+        ]);
+        if ($request) {
+            $perusahaan = new Perusahaan();
+            $perusahaan->nib = $request['nib'];
+            $perusahaan->npwp = $request['npwp'];
+            $perusahaan->nama_perusahaan = $request['nama_perusahaan'];
+            $perusahaan->jenis_perusahaan_id = $request['jenis_perusahaan'];
+            $perusahaan->save();
+
+            return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
+        }
     }
 
     /**
@@ -46,7 +63,9 @@ class PerusahaanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $perusahaan = Perusahaan::find($id);
+        $jenis_perusahaan = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.edit', ['jenis_perusahaan' => $jenis_perusahaan, 'perusahaan' => $perusahaan]);
     }
 
     /**
@@ -54,7 +73,22 @@ class PerusahaanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nib' => 'required|min:5|max:30',
+            'npwp' => 'required|min:5|max:30',
+            'nama_perusahaan' => 'required|min:5|max:255',
+            'jenis_perusahaan_id' => 'required|min:5|max:30',
+
+        ]);
+        if ($request) {
+            $perusahaan = Perusahaan::find($id);
+            $perusahaan->nib = $request->nib;
+            $perusahaan->npwp = $request->npwp;
+            $perusahaan->nama_perusahaan = $request->nama_perusahaan;
+            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
+            $perusahaan->save();
+        }
+        return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
     }
 
     /**
@@ -62,6 +96,9 @@ class PerusahaanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $perusahaan = Perusahaan::find($id);
+        $perusahaan->delete();
+
+        return back()->with('success', 'Perusahaan Berhasil Dihapus');
     }
 }

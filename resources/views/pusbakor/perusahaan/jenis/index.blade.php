@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h1 class="mt-2"><b>Jenis Perusahaan PUSBAKOR</b></h1>
-            <a href="/jenisperusahaan/create" class="btn btn-primary btn-sm mb-1 mt-3">Tambah Jenis Perusahaan</a>
+            <a href="/jenis_perusahaan/create" class="btn btn-primary btn-sm mb-1 mt-3">Tambah Jenis Perusahaan</a>
             <div class="card">
                 <table class="table">
                     <thead>
@@ -20,10 +20,10 @@
                                 <td>{{ $loop->iteration}}</td>
                                 <td>{{ $jp ->jenis_perusahaan}}</td>
                                 <td>
-                                    <form action="{{route ('jenisperusahaan.destroy',$jp->id)}}" method="POST">
+                                    <form action="{{route ('jenis_perusahaan.destroy',$jp->id)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <a href="jenisperusahaan/{{$jp['id']}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="jenis_perusahaan/{{$jp['id']}}/edit" class="btn btn-success btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-trash btn-sm">Delete</button>
                                     </form>
                                 </td>

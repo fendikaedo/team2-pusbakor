@@ -12,9 +12,8 @@ class JenisPerusahaanController extends Controller
      */
     public function index()
     {
-        return view('pusbakor.perusahaan.jenis.index')->with([
-            'jenis_perusahaan' => Jenis_Perusahaan::all(),
-        ]);
+        $jenis_perusahaan = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.jenis.index',['jenis_perusahaan'=>$jenis_perusahaan]);
     }
 
     /**
@@ -22,9 +21,8 @@ class JenisPerusahaanController extends Controller
      */
     public function create()
     {
-        return view('pusbakor.perusahaan.jenis.create')->with([
-            'jenis_perusahaan' => Jenis_Perusahaan::all(),
-        ]);
+        $jenis_perusahaan = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.jenis.create',['jenis_perusahaan'=>$jenis_perusahaan]);
     }
 
     /**
@@ -56,9 +54,8 @@ class JenisPerusahaanController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pusbakor.perusahaan.jenis.edit')->with([
-            'jenis_perusahaan' => Jenis_Perusahaan::find($id),
-        ]);
+        $jenis_perusahaan=Jenis_Perusahaan::find($id);
+        return view('pusbakor.perusahaan.jenis.edit',['jenis_perusahaan'=>$jenis_perusahaan]);
     }
 
     /**

@@ -39,7 +39,7 @@ Route::resource('skalausaha', SkalaUsahaController::class);
 Route::resource('kbli', KbliController::class);
 Route::resource('kecamatan', KecamatanController::class);
 Route::resource('desa', DesaController::class);
-Route::resource('jenisperusahaan', JenisPerusahaanController::class);
+Route::resource('jenis_perusahaan', JenisPerusahaanController::class);
 Route::resource('perusahaan', PerusahaanController::class);
 
 
