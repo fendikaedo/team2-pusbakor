@@ -14,7 +14,7 @@ class PerusahaanController extends Controller
     public function index()
     {
         $perusahaan = Perusahaan::all();
-        return view('pusbakor.perusahaan.index',['perusahaan'=>$perusahaan]);
+        return view('pusbakor.perusahaan.index', ['perusahaan' => $perusahaan]);
     }
 
     /**
@@ -22,8 +22,9 @@ class PerusahaanController extends Controller
      */
     public function create()
     {
+        $perusahaan = Perusahaan::all();
         $jenis_perusahaan = Jenis_Perusahaan::all();
-        return view('pusbakor.perusahaan.create', ['jenis_perusahaan' => $jenis_perusahaan]);
+        return view('pusbakor.perusahaan.create', ['jenis_perusahaan' => $jenis_perusahaan, 'perusahaan' => $perusahaan]);
     }
 
     /**
@@ -35,18 +36,21 @@ class PerusahaanController extends Controller
             'nib' => 'required|min:5|max:50',
             'npwp' => 'required|min:5|max:50',
             'nama_perusahaan' => 'required|min:5|max:255',
-            'jenis_perusahaan_id' => 'required|min:5|max:30',
+            'jenis_perusahaan_id' => 'required',
 
         ]);
         if ($request) {
             $perusahaan = new Perusahaan();
-            $perusahaan->nib = $request['nib'];
-            $perusahaan->npwp = $request['npwp'];
-            $perusahaan->nama_perusahaan = $request['nama_perusahaan'];
-            $perusahaan->jenis_perusahaan_id = $request['jenis_perusahaan'];
+            $perusahaan->nib = $request->nib;
+            $perusahaan->npwp = $request->npwp;
+            $perusahaan->nama_perusahaan = $request->nama_perusahaan;
+            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
             $perusahaan->save();
 
             return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
+        } else {
+            // Validasi gagal, tambahkan logika jika diperlukan
+            return back()->withInput()->withErrors($request);
         }
     }
 
@@ -77,7 +81,7 @@ class PerusahaanController extends Controller
             'nib' => 'required|min:5|max:50',
             'npwp' => 'required|min:5|max:50',
             'nama_perusahaan' => 'required|min:5|max:255',
-            'jenis_perusahaan_id' => 'required|min:5|max:30',
+            'jenis_perusahaan_id' => 'required',
 
         ]);
         if ($request) {
@@ -87,9 +91,13 @@ class PerusahaanController extends Controller
             $perusahaan->nama_perusahaan = $request->nama_perusahaan;
             $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
             $perusahaan->save();
+            return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Dirubah');
+        } else {
+            // Validasi gagal, tambahkan logika jika diperlukan
+            return back()->withInput()->withErrors($request);
         }
-        return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
     }
+
 
     /**
      * Remove the specified resource from storage.

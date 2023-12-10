@@ -38,7 +38,7 @@ class JenisPerusahaanController extends Controller
             $jenis_perusahaan->jenis_perusahaan = $request->jenis_perusahaan;
             $jenis_perusahaan->save();
         }
-        return redirect()->route('jenisperusahaan.index')->with('success', 'Jenis Perusahaan Berhasil Ditambahkan');
+        return redirect()->route('jenis_perusahaan.index')->with('success', 'Jenis Perusahaan Berhasil Ditambahkan');
     }
 
     /**

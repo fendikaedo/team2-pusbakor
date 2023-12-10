@@ -40,7 +40,14 @@ Route::resource('kbli', KbliController::class);
 Route::resource('kecamatan', KecamatanController::class);
 Route::resource('desa', DesaController::class);
 Route::resource('jenis_perusahaan', JenisPerusahaanController::class);
-Route::resource('perusahaan', PerusahaanController::class);
+//Route::resource('perusahaan', PerusahaanController::class);
+
+Route::get('/pusbakor/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');
+    Route::get('/pusbakor/perusahaan/{id}/edit', [PerusahaanController::class, 'edit'])->name('perusahaan.edit');
+    Route::get('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
+    Route::post('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
+    Route::get('/perusahaan/create', [PerusahaanController::class, 'create'])->name('perusahaan.create');
+    Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
 
 
 

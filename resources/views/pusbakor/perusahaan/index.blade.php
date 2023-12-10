@@ -1,6 +1,16 @@
 @extends('dashboard.index')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-body">
             <h1 class="mt-2"><b>Perusahaan PUSBAKOR</b></h1>
@@ -20,16 +30,17 @@
                     <tbody>
                         @foreach ($perusahaan as $p)
                             <tr>
-                                <td>{{ $loop->iteration}}</td>
-                                <td>{{ $p ->nib}}</td>
-                                <td>{{ $p ->npwp}}</td>
-                                <td>{{ $p ->nama_perusahaan}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $p->nib }}</td>
+                                <td>{{ $p->npwp }}</td>
+                                <td>{{ $p->nama_perusahaan }}</td>
                                 <td>{{ $p['jenis_perusahaan']['jenis_perusahaan'] }}</td>
                                 <td>
-                                    <form action="{{route ('perusahaan.destroy',$p->id)}}" method="POST">
+                                    <form action="{{ route('perusahaan.destroy', $p->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <a href="perusahaan/{{$p['id']}}/edit" class="btn btn-success btn-sm">Edit</a>
+                                        <a href="perusahaan/{{ $p['id'] }}/edit"
+                                            class="btn btn-success btn-sm">Edit</a>
                                         <button class="btn btn-danger btn-trash btn-sm">Delete</button>
                                     </form>
                                 </td>
@@ -49,11 +60,12 @@
     h1 {
         text-align: center
     }
-    tr{
+
+    tr {
         text-align: center
     }
+
     .card {
         width: 100%;
     }
 </style>
-
