@@ -29,18 +29,25 @@ class ProyekController extends Controller
      */
     public function create()
     {
-        return view('pusbakor.proyek.create')->with([
-            'proyek' => Proyek::all(),
-            'perusahaan' => Perusahaan::all(),
-            'modal' => Modal::all(),
-            'resiko' => Resiko::all(),
-            'skala_usaha' => Skala_Usaha::all(),
-            'kecamatan' => Kecamatan::all(),
-            'desa' => Desa::all(),
-            'kbli' => Kbli::all(),
+        $proyek = Proyek::all();
+        $perusahaan_id = Perusahaan::all();
+        $modal_id = Modal::all();
+        $resiko_id = Skala_Usaha::all();
+        $skala_usaha_id = Skala_Usaha::all();
+        $kecamatan_id = Kecamatan::all();
+        $desa_id = Desa::all();
+        $kbli_id = Kbli::all();
+        return view('pusbakor.proyek.create', [
+            'proyek' => $proyek,
+            'perusahaan' => $perusahaan_id,
+            'modal' => $modal_id,
+            'resiko' => $resiko_id,
+            'skala_usaha' => $skala_usaha_id,
+            'kecamatan' => $kecamatan_id,
+            'desa' => $desa_id,
+            'kbli' => $kbli_id,
+            ]);
 
-
-        ]);
     }
 
     /**
@@ -53,28 +60,28 @@ class ProyekController extends Controller
             'latitude' => 'required|min:5|max:50',
             'alamat' => 'required|min:5|max:100',
             'investasi' => 'required|min:5|max:50',
-            'perusahaan_id' => 'required|min:5|max:30',
-            'modal_id' => 'required|min:5|max:30',
-            'resiko_id' => 'required|min:5|max:30',
-            'skala_usaha_id' => 'required|min:5|max:30',
-            'kecamatan_id' => 'required|min:5|max:30',
-            'desa_id' => 'required|min:5|max:30',
-            'kbli_id' => 'required|min:5|max:30',
+            'perusahaan_id' => 'required',
+            'modal_id' => 'required',
+            'resiko_id' => 'required',
+            'skala_usaha_id' => 'required',
+            'kecamatan_id' => 'required',
+            'desa_id' => 'required',
+            'kbli_id' => 'required',
         ]);
         if ($request) {
-            $perusahaan = new Proyek();
-            $perusahaan->longitude = $request['longitude'];
-            $perusahaan->latitude = $request['latitude'];
-            $perusahaan->alamat = $request['alamat'];
-            $perusahaan->investasi = $request['investasi'];
-            $perusahaan->perusahaan_id = $request['nama_perusahaan'];
-            $perusahaan->modal_id = $request['status_modal'];
-            $perusahaan->resiko_id = $request['resiko_proyek'];
-            $perusahaan->skala_usaha_id = $request['skala_usaha'];
-            $perusahaan->kecamatan_id = $request['nama_kecamatan'];
-            $perusahaan->desa_id = $request['nama_desa'];
-            $perusahaan->kbli_id = $request['judul'];
-            $perusahaan->save();
+            $proyek = new Proyek();
+            $proyek->longitude = $request->longitude;
+            $proyek->latitude = $request->latitude;
+            $proyek->alamat = $request->alamat;
+            $proyek->investasi = $request->investasi;
+            $proyek->perusahaan_id = $request->nama_perusahaan;
+            $proyek->modal_id = $request->status_modal;
+            $proyek->resiko_id = $request->resiko_proyek;
+            $proyek->skala_usaha_id = $request->skala_usaha;
+            $proyek->kecamatan_id = $request->nama_kecamatan;
+            $proyek->desa_id = $request->nama_desa;
+            $proyek->kbli_id = $request->judul;
+            $proyek->save();
 
             return redirect()->route('proyek.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
         }

@@ -33,8 +33,8 @@ class PerusahaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nib' => 'required|min:5|max:50',
-            'npwp' => 'required|min:5|max:50',
+            'nib' => 'required',
+            'npwp' => 'required',
             'nama_perusahaan' => 'required|min:5|max:255',
             'jenis_perusahaan_id' => 'required',
 
@@ -44,7 +44,7 @@ class PerusahaanController extends Controller
             $perusahaan->nib = $request->nib;
             $perusahaan->npwp = $request->npwp;
             $perusahaan->nama_perusahaan = $request->nama_perusahaan;
-            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
+            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan;
             $perusahaan->save();
 
             return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');

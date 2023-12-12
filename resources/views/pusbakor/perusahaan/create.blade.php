@@ -38,7 +38,7 @@
                             name="nama_perusahaan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_perusahaan" class="form-label"><b>Jenis Perusahaan</b></label>
+                        <label for="jenis_perusahaan_id" class="form-label"><b>Jenis Perusahaan</b></label>
                         <select class="custom-select" name="jenis_perusahaan_id" required>
                             <option selected>Pilih Jenis Perusahaan</option>
                             @foreach ($jenis_perusahaan as $jp)

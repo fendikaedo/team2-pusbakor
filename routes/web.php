@@ -32,7 +32,7 @@ Route::get('/', function () {
 
 Route::resource('dashboard', DashboardController::class);
 Route::resource('register', LayoutController::class);
-Route::resource('proyek', ProyekController::class);
+//Route::resource('proyek', ProyekController::class);
 Route::resource('modal', ModalController::class);
 Route::resource('resiko', ResikoController::class);
 Route::resource('skalausaha', SkalaUsahaController::class);
@@ -43,16 +43,15 @@ Route::resource('jenis_perusahaan', JenisPerusahaanController::class);
 //Route::resource('perusahaan', PerusahaanController::class);
 
 Route::get('/pusbakor/perusahaan', [PerusahaanController::class, 'index'])->name('perusahaan.index');
-    Route::get('/pusbakor/perusahaan/{id}/edit', [PerusahaanController::class, 'edit'])->name('perusahaan.edit');
-    Route::get('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
-    Route::post('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
-    Route::get('/perusahaan/create', [PerusahaanController::class, 'create'])->name('perusahaan.create');
-    Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
+Route::get('/pusbakor/perusahaan/{id}/edit', [PerusahaanController::class, 'edit'])->name('perusahaan.edit');
+Route::get('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'destroy'])->name('perusahaan.destroy');
+Route::post('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
+Route::get('/perusahaan/create', [PerusahaanController::class, 'create'])->name('perusahaan.create');
+Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
 
-
-
-
-
-
-
-
+Route::get('/pusbakor/proyek', [ProyekController::class, 'index'])->name('proyek.index');
+Route::get('/pusbakor/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('proyek.edit');
+Route::get('/pusbakor/proyek/{id}', [ProyekController::class, 'destroy'])->name('proyek.destroy');
+Route::post('/pusbakor/proyek/{id}', [ProyekController::class, 'update'])->name('proyek.update');
+Route::get('/proyek/create', [ProyekController::class, 'create'])->name('proyek.create');
+Route::post('/proyek/store', [ProyekController::class, 'store'])->name('proyek.store');
