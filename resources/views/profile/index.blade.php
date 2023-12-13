@@ -1,4 +1,4 @@
-@extends('dashboard.index')
+@extends('layouts.home')
 @section('title', 'Profile Pusbakor')
 @section('content')
     <div class="container-fluid">

@@ -1,4 +1,4 @@
-@extends('dashboard.index')
+@extends('layouts.home')
 
 @section('title', 'Modal PUSBAKOR')
 @section('content')
