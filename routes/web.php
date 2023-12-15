@@ -14,6 +14,10 @@ use App\Http\Controllers\DesaController;
 use App\Http\Controllers\JenisPerusahaanController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -71,5 +75,9 @@ Route::middleware(['auth'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
 
 

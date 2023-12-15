@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+@section('title','Forgot Password')
+@section('title1','Forgot Password')
 
 @section('content')
-<div class="container">
+<div class="container mt-8">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

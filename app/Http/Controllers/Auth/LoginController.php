@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
@@ -41,7 +42,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     protected function authenticated(Request $request, $user)
-{
-    Session::flash('success', 'Login telah berhasil,Selamat Datang ' . $user->name);
-}
+    {
+        if (Auth::check()) {
+            Session::flash('success', 'Login telah berhasil, Selamat Datang ' . $user->name);
+            return redirect()->intended($this->redirectPath());
+        } else {
+            return redirect()->route('login')->withErrors(['error' => 'Email atau Password salah']);
+        }
+    }
 }
