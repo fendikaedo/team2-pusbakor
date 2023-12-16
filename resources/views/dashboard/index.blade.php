@@ -1,17 +1,20 @@
 @extends('layouts.home')
 
 @section('title', 'Dashboard')
+@section('title1', 'Home')
+@section('title2', 'Dashboard')
+
 @section('content')
 
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card bg-success">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold text-white">Proyek</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         2,300
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -28,12 +31,12 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card bg-success">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold text-white">Perusahaan</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         2,300
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -50,12 +53,12 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card bg-success">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold text-white">Kecamatan</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         2,300
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -72,12 +75,12 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
+                <div class="card bg-success">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold text-white">Kelurahan/Desa</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         2,300
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -96,7 +99,7 @@
             <div class="col-lg-7 mt-4">
                 <div class="card z-index-2">
                     <div class="card-header pb-0">
-                        <h6>Sales overview</h6>
+                        <h6>Perusahaan</h6>
                         <p class="text-sm">
                             <i class="fa fa-arrow-up text-success"></i>
                             <span class="font-weight-bold">4% more</span> in 2021

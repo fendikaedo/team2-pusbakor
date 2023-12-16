@@ -16,9 +16,6 @@ class Proyek extends Model
         return $this->belongsTo(Perusahaan::class, 'perusahaan_id');
     }
 
-    // Tambahkan relasi dengan model Modal, Resiko, SkalaUsaha, Kecamatan, Desa, KBLI sesuai kebutuhan
-
-    // Contoh relasi dengan model Modal
     public function modal()
     {
         return $this->belongsTo(Modal::class, 'modal_id');

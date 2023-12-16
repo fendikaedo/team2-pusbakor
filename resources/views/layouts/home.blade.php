@@ -19,7 +19,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{asset ('img/favicon.png')}}">
     <title>
         PUSBAKOR
     </title>
@@ -32,6 +32,7 @@
     <!-- Nucleo Icons -->
     <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
+    <link href="{{ asset('scss/soft-ui-dashboard/_pagination.scss') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -42,15 +43,15 @@
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+<body class="g-sidenav-show  bg-primary-100">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-dark"
         id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="#" target="_blank">
                 <img src="{{ asset('img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold">PUSBAKOR</span>
+                <span class="ms-1 font-weight-bold text-white">PUSBAKOR</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -84,7 +85,7 @@
                     </a>
                 </li>
                 <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Master</h6>
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6 text-white">Master</h6>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link  " href="{{ route('proyek.index') }}">
@@ -110,7 +111,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Proyek</span>
+                        <span class="nav-link-text ms-1 text-white">Proyek</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -137,7 +138,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Perusahaan</span>
+                        <span class="nav-link-text ms-1 text-white">Perusahaan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -164,7 +165,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Jenis Perusahaan</span>
+                        <span class="nav-link-text ms-1 text-white">Jenis Perusahaan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -191,7 +192,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Modal</span>
+                        <span class="nav-link-text ms-1 text-white">Modal</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -218,7 +219,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Resiko</span>
+                        <span class="nav-link-text ms-1 text-white">Resiko</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -245,7 +246,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Skala Usaha</span>
+                        <span class="nav-link-text ms-1 text-white">Skala Usaha</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -272,7 +273,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">KBLI</span>
+                        <span class="nav-link-text ms-1 text-white">KBLI</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -299,7 +300,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Kecamatan</span>
+                        <span class="nav-link-text ms-1 text-white">Kecamatan</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -326,15 +327,15 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Kelurahan/Desa</span>
+                        <span class="nav-link-text ms-1 text-white">Kelurahan/Desa</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="sidenav-footer mx-3 ">
+        <div class="sidenav-footer mx-3 mt-3">
             <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
                 <div class="full-background"
-                    style="background-image: url('{{ asset('img/curved-images/white-curved.jpg') }}')"></div>
+                    style="background-image: url('{{ asset('img/curved-images/curved-6.jpg') }}')"></div>
                 <div class="card-body text-start p-3 w-100">
                     <div
                         class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
@@ -360,9 +361,9 @@
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{route('dashboard.index')}}">
                                 @yield('title1')</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
                             @yield('title2')</li>
                     </ol>
                     <h6 class="font-weight-bolder mb-0">Dashboard</h6>
@@ -513,10 +514,12 @@
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table p-4 mb-0">
-
                                     @yield('content')
                                 </table>
                             </div>
+                        </div>
+                        <div class="pagination p-3">
+                            @yield('pagination')
                         </div>
                     </div>
                 </div>

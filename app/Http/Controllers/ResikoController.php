@@ -13,7 +13,7 @@ class ResikoController extends Controller
     public function index()
     {
         return view('pusbakor.resiko.index')->with([
-            'resiko' => Resiko::all(),
+            'resiko' => Resiko::paginate(10),
         ]);
     }
 

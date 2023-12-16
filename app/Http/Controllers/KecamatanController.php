@@ -13,7 +13,7 @@ class KecamatanController extends Controller
     public function index()
     {
         return view('pusbakor.kecamatan.index')->with([
-            'kecamatan' => Kecamatan::all(),
+            'kecamatan' => Kecamatan::paginate(10),
         ]);
     }
 

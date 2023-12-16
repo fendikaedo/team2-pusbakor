@@ -10,4 +10,8 @@ class Kbli extends Model
     use HasFactory;
     protected $table = 'Kbli';
     protected $guarded = 'id';
+
+    public function proyek(){
+        return $this->hasMany(Proyek::class, 'kbli_id');
+    }
 }

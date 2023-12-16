@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
-@section('title','Jenis Perusahaan PUSBAKOR')
+@section('title', 'Jenis Perusahaan PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Jenis Perusahaan')
 @section('content')
     <a href="/jenis_perusahaan/create" class="btn btn-primary btn-sm m-3">Tambah Jenis Perusahaan</a>
     <thead>
@@ -26,6 +28,9 @@
             </tr>
         @endforeach
     </tbody>
+@endsection
+@section('pagination')
+    {{ $jenis_perusahaan->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

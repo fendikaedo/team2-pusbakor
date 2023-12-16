@@ -12,7 +12,7 @@ class JenisPerusahaanController extends Controller
      */
     public function index()
     {
-        $jenis_perusahaan = Jenis_Perusahaan::all();
+        $jenis_perusahaan = Jenis_Perusahaan::paginate(10);
         return view('pusbakor.perusahaan.jenis.index',['jenis_perusahaan'=>$jenis_perusahaan]);
     }
 

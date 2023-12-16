@@ -44,9 +44,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('profile', ProfileController::class);
     Route::resource('dashboard', DashboardController::class);
     Route::resource('tables', LayoutController::class);
-    //Route::resource('proyek', ProyekController::class);
+    Route::resource('proyek', ProyekController::class);
     Route::resource('modal', ModalController::class);
     Route::resource('resiko', ResikoController::class);
+    //Route::get('/pusbakor/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('proyek.edit');
+    //Route::post('/pusbakor/proyek/{id}', [ProyekController::class, 'update'])->name('proyek.update');
     Route::resource('skalausaha', SkalaUsahaController::class);
     Route::resource('kbli', KbliController::class);
     Route::resource('kecamatan', KecamatanController::class);
@@ -60,13 +62,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pusbakor/perusahaan/{id}', [PerusahaanController::class, 'update'])->name('perusahaan.update');
     Route::get('/perusahaan/create', [PerusahaanController::class, 'create'])->name('perusahaan.create');
     Route::post('/perusahaan/store', [PerusahaanController::class, 'store'])->name('perusahaan.store');
-
-    Route::get('/pusbakor/proyek', [ProyekController::class, 'index'])->name('proyek.index');
-    Route::get('/pusbakor/proyek/{id}/edit', [ProyekController::class, 'edit'])->name('proyek.edit');
-    Route::get('/pusbakor/proyek/{id}', [ProyekController::class, 'destroy'])->name('proyek.destroy');
-    Route::post('/pusbakor/proyek/{id}', [ProyekController::class, 'update'])->name('proyek.update');
-    Route::get('/proyek/create', [ProyekController::class, 'create'])->name('proyek.create');
-    Route::post('/proyek/store', [ProyekController::class, 'store'])->name('proyek.store');
 });
 
 

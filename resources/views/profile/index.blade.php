@@ -1,5 +1,7 @@
 @extends('layouts.home')
 @section('title', 'Profile Pusbakor')
+@section('title1', 'Home')
+@section('title2', 'Profile')
 @section('content')
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4"

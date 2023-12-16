@@ -13,7 +13,7 @@ class SkalaUsahaController extends Controller
     public function index()
     {
         return view('pusbakor.skala_usaha.index')->with([
-            'skala_usaha' => Skala_Usaha::all(),
+            'skala_usaha' => Skala_Usaha::paginate(10),
         ]);
     }
 

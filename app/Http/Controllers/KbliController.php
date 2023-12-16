@@ -13,7 +13,7 @@ class KbliController extends Controller
     public function index()
     {
         return view('pusbakor.kbli.index')->with([
-            'kbli' => Kbli::all(),
+            'kbli' => Kbli::paginate(10),
         ]);
     }
 

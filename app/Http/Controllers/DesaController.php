@@ -13,7 +13,7 @@ class DesaController extends Controller
     public function index()
     {
         return view('pusbakor.desa.index')->with([
-            'Desa' => Desa::all(),
+            'Desa' => Desa::paginate(10),
         ]);
     }
 

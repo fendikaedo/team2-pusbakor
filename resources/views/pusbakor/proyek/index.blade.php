@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
 @section('title', 'Proyek PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Proyek')
 @section('content')
     <a href="/proyek/create" class="btn btn-primary btn-sm m-3">Tambah Proyek</a>
     <thead>
@@ -28,13 +30,13 @@
                 <td>{{ $pro->latitude }}</td>
                 <td>{{ $pro->alamat }}</td>
                 <td>{{ $pro->investasi }}</td>
-                <td>{{ $pro['perusahaan']['nama_perusahaan'] }}</td>
-                <td>{{ $pro['modal']['status_modal'] }}</td>
-                <td>{{ $pro['resiko']['resiko_proyek'] }}</td>
-                <td>{{ $pro['skala_usaha']['skala_usaha'] }}</td>
-                <td>{{ $pro['kecamatan']['nama_kecamatan'] }}</td>
-                <td>{{ $pro['desa']['nama_desa'] }}</td>
-                <td>{{ $pro['kbli']['judul'] }}</td>
+                <td>{{ $pro->perusahaan->nama_perusahaan }}</td>
+                <td>{{ $pro->modal->status_modal }}</td>
+                <td>{{ $pro->resiko->resiko_proyek }}</td>
+                <td>{{ $pro->skala_usaha->skala_usaha }}</td>
+                <td>{{ $pro->kecamatan->nama_kecamatan }}</td>
+                <td>{{ $pro->desa->nama_desa }}</td>
+                <td>{{ $pro->kbli->judul }}</td>
                 <td>
                     <form action="{{ route('proyek.destroy', $pro->id) }}" method="POST">
                         @method('DELETE')
@@ -46,6 +48,9 @@
             </tr>
         @endforeach
     </tbody>
+@endsection
+@section('pagination')
+    {{ $proyek->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

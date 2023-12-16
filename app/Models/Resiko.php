@@ -10,4 +10,8 @@ class Resiko extends Model
     use HasFactory;
     protected $table = 'Resiko';
     protected $guarded = 'id';
+
+    public function proyek(){
+        return $this->hasMany(Proyek::class, 'resiko_id');
+    }
 }

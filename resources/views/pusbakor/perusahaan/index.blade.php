@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
 @section('title', 'Perusahaan PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Perusahaan')
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -41,7 +43,9 @@
             </tr>
         @endforeach
     </tbody>
-
+@endsection
+@section('pagination')
+    {{ $perusahaan->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {
@@ -52,6 +56,6 @@
         text-align: center
     }
     .nama_perusahaan{
-        text-align: left
+        text-align: center
     }
 </style>

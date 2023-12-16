@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
 @section('title', 'Modal PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Modal')
 @section('content')
     <a href="/modal/create" class="btn btn-primary btn-sm m-3">Tambah Status Modal</a>
     <thead>
@@ -26,7 +28,9 @@
             </tr>
         @endforeach
     </tbody>
-
+@endsection
+@section('pagination')
+    {{ $modal->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

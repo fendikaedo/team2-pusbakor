@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
 @section('title', 'KBLI PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'KBLI')
 @section('content')
     <a href="/kbli/create" class="btn btn-primary btn-sm m-3">Tambah KBLI</a>
     <thead>
@@ -30,16 +32,20 @@
             </tr>
         @endforeach
     </tbody>
-
+@endsection
+@section('pagination')
+    {{ $kbli->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {
         text-align: center
     }
+
     tbody {
         text-align: center
     }
-    .judul{
+
+    .judul {
         text-align: left
     }
 </style>

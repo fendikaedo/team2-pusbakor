@@ -3,7 +3,6 @@
 @section('content')
 
     <div class="container">
-        <h1 style="text-align: center" class="mt-3 mb-3">Tambah Perusahaan</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -22,13 +21,13 @@
                         @csrf
                         <div class="mb-3">
                             <label for="longitude" class="form-label"><b>Longitude</b></label>
-                            <input class="form-control" type="text" placeholder="Masukkan Longitude"
+                            <input class="form-control" type="number" placeholder="Masukkan Longitude"
                                 aria-label="longitude" id="longitude" value="{{ old('longitude') }}" name="longitude"
                                 required>
                         </div>
                         <div class="mb-3">
                             <label for="latitude" class="form-label"><b>Latitude</b></label>
-                            <input class="form-control" type="text" placeholder="Masukkan Latitude" aria-label="latitude"
+                            <input class="form-control" type="number" placeholder="Masukkan Latitude" aria-label="latitude"
                                 id="latitude" value="{{ old('latitude') }}" name="latitude" required>
                         </div>
                         <div class="mb-3">
@@ -44,11 +43,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="perusahaan_id" class="form-label"><b>Perusahaan</b></label>
+                                <label for="perusahaan" class="form-label"><b>Perusahaan</b></label>
                             </div>
-                            <select class="custom-select" name="perusahaan" id="perusahaan" required>
+                            <select class="custom-select" name="perusahaan_id"required>
                                 <option selected>Perusahaan</option>
-                                @foreach ($perusahaan as $p)
+                                @foreach ($perusahaan_id as $p)
                                     @if (old('perusahaan') == $p['id'])
                                         <option value="{{ $p['id'] }}" selected> {{ $p['nama_perusahaan'] }}</option>
                                     @else
@@ -59,11 +58,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="modal_id" class="form-label"><b>Status Modal</b></label>
+                                <label for="modal" class="form-label"><b>Status Modal</b></label>
                             </div>
-                            <select class="custom-select" name="modal" required>
+                            <select class="custom-select" name="modal_id" required>
                                 <option selected>Status Modal</option>
-                                @foreach ($modal as $m)
+                                @foreach ($modal_id as $m)
                                     @if (old('modal') == $m['id'])
                                         <option value="{{ $m['id'] }}" selected> {{ $m['status_modal'] }}</option>
                                     @else
@@ -74,11 +73,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="resiko_id" class="form-label"><b>Resiko Proyek</b></label>
+                                <label for="resiko" class="form-label"><b>Resiko Proyek</b></label>
                             </div>
-                            <select class="custom-select" name="resiko" required>
+                            <select class="custom-select" name="resiko_id" required>
                                 <option selected>Resiko Proyek</option>
-                                @foreach ($resiko as $r)
+                                @foreach ($resiko_id as $r)
                                     @if (old('resiko') == $r['id'])
                                         <option value="{{ $r['id'] }}" selected> {{ $r['resiko_proyek'] }}</option>
                                     @else
@@ -89,11 +88,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="skala_usaha_id" class="form-label"><b>Skala Usaha</b></label>
+                                <label for="skala_usaha class="form-label"><b>Skala Usaha</b></label>
                             </div>
-                            <select class="custom-select" name="skala_usaha" required>
+                            <select class="custom-select" name="skala_usaha_id" required>
                                 <option selected>Skala Usaha</option>
-                                @foreach ($skala_usaha as $su)
+                                @foreach ($skala_usaha_id as $su)
                                     @if (old('skala_usaha') == $su['id'])
                                         <option value="{{ $su['id'] }}" selected> {{ $su['skala_usaha'] }}</option>
                                     @else
@@ -104,11 +103,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="kecamatan_id" class="form-label"><b>Kecamatan</b></label>
+                                <label for="kecamatan" class="form-label"><b>Kecamatan</b></label>
                             </div>
-                            <select class="custom-select" name="kecamatan" required>
+                            <select class="custom-select" name="kecamatan_id" required>
                                 <option selected>Kecamatan</option>
-                                @foreach ($kecamatan as $kec)
+                                @foreach ($kecamatan_id as $kec)
                                     @if (old('kecamatan') == $kec['id'])
                                         <option value="{{ $kec['id'] }}" selected> {{ $kec['nama_kecamatans'] }}
                                         </option>
@@ -120,11 +119,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="desa_id" class="form-label"><b>Kelurahan/Desa</b></label>
+                                <label for="desa" class="form-label"><b>Kelurahan/Desa</b></label>
                             </div>
-                            <select class="custom-select" name="desa" required>
+                            <select class="custom-select" name="desa_id" required>
                                 <option selected>Kelurahan/Desa</option>
-                                @foreach ($desa as $d)
+                                @foreach ($desa_id as $d)
                                     @if (old('desa') == $d['id'])
                                         <option value="{{ $d['id'] }}" selected> {{ $d['nama_desa'] }}</option>
                                     @else
@@ -135,11 +134,11 @@
                         </div>
                         <div class="mb-3">
                             <div class="col-md-12">
-                                <label for="kbli_id" class="form-label"><b>KBLI</b></label>
+                                <label for="kbli" class="form-label"><b>KBLI</b></label>
                             </div>
-                            <select class="custom-select" name="kbli" required>
+                            <select class="custom-select" name="kbli_id" required>
                                 <option selected>Judul KBLI</option>
-                                @foreach ($kbli as $k)
+                                @foreach ($kbli_id as $k)
                                     @if (old('kbli') == $k['id'])
                                         <option value="{{ $k['id'] }}" selected> {{ $k['judul'] }}</option>
                                     @else

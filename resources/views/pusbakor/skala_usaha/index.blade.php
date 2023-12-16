@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
-@section('title','Skala Usaha PUSBAKOR')
+@section('title', 'Skala Usaha PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Skala Usaha')
 @section('content')
     <a href="/skalausaha/create" class="btn btn-primary btn-sm m-3">Tambah Skala Usaha</a>
     <thead>
@@ -26,6 +28,9 @@
             </tr>
         @endforeach
     </tbody>
+@endsection
+@section('pagination')
+    {{ $skala_usaha->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

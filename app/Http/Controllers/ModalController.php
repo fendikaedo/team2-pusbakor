@@ -12,7 +12,7 @@ class ModalController extends Controller
     public function index()
     {
         return view('pusbakor.modal.index')->with([
-            'modal' => Modal::all(),
+            'modal' => Modal::paginate(10),
         ]);
     }
 

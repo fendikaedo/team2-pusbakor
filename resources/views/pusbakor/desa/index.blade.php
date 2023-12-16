@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
 @section('title', 'Kelurahan/Desa PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Kelurahan/Desa')
 @section('content')
     <a href="/desa/create" class="btn btn-primary btn-sm m-3">Tambah Kelurahan/Desa</a>
     <thead>
@@ -26,6 +28,9 @@
             </tr>
         @endforeach
     </tbody>
+@endsection
+@section('pagination')
+    {{ $Desa->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

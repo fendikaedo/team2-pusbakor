@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('proyek', function (Blueprint $table) {
             $table->id();
-            $table->decimal('longitude');
-            $table->decimal('latitude');
+            $table->double('longitude');
+            $table->double('latitude');
             $table->string('alamat');
-            $table->decimal('investasi');
+            $table->decimal('investasi',10,8);
             $table->integer('perusahaan_id');
             $table->integer('modal_id');
             $table->integer('resiko_id');

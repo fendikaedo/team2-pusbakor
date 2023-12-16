@@ -1,6 +1,8 @@
 @extends('layouts.home')
 
-@section('title','Resiko Proyek PUSBAKOR')
+@section('title', 'Resiko Proyek PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Resiko')
 @section('content')
     <a href="/resiko/create" class="btn btn-primary btn-sm m-3">Tambah Resiko</a>
     <thead>
@@ -26,6 +28,9 @@
             </tr>
         @endforeach
     </tbody>
+@endsection
+@section('pagination')
+    {{ $resiko->links('pagination::bootstrap-5') }}
 @endsection
 <style>
     thead {

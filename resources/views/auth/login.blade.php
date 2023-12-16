@@ -62,8 +62,8 @@
             </div>
         </div>
     </section>
-    <footer class="footer py-4">
-        <div class="container">
+    <footer class="footer py-2">
+        <div class="container mb-3">
             <div class="row">
                 <div class="col-lg-8 mb-4 mx-auto text-center">
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">

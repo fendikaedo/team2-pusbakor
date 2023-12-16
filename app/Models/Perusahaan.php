@@ -20,5 +20,9 @@ class Perusahaan extends Model
     public function jenis_perusahaan(){
         return $this->belongsTo(Jenis_Perusahaan::class, 'jenis_perusahaan_id');
     }
+
+    public function proyek(){
+        return $this->hasMany(Proyek::class, 'perusahaan_id');
+    }
 }
 
