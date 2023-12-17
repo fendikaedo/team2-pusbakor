@@ -1,5 +1,8 @@
 @extends('layouts.home')
-
+@section('title', 'Proyek PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Proyek')
+@section('title3', 'Edit Proyek')
 @section('content')
 
     <div class="container">
@@ -13,7 +16,6 @@
             </div>
         @endif
         <div class="container">
-            <h1 style="text-align: center" class="mt-3 mb-3">Edit Proyek</h1>
             <a href="{{ route('proyek.index') }}" class="btn btn-primary btn-sm mb-3">Kembali</a>
             <div class="card">
                 <div class="card-body p-3">
@@ -39,7 +41,7 @@
                         <div class="mb-3">
                             <label for="investasi" class="form-label"><b>Investasi</b></label>
                             <input class="form-control" type="text" placeholder="Masukkan Investasi"
-                                aria-label="investasi" id="investasi" value="{{$proyek->investasi}}"" name="investasi"
+                                aria-label="investasi" id="investasi" value="{{$proyek->investasi}}" name="investasi"
                                 required>
                         </div>
                         <div class="mb-3">

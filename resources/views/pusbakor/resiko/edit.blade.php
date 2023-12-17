@@ -1,5 +1,8 @@
 @extends('layouts.home')
-
+@section('title', 'Resiko Proyek PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Resiko')
+@section('title3', 'Edit Resiko')
 @section('content')
 <div class="container">
     <h1 style="text-align: center" class="mt-3 mb-3">Tambah Resiko Proyek</h1>

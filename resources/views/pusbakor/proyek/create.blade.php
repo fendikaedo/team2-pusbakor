@@ -1,5 +1,8 @@
 @extends('layouts.home')
-
+@section('title', 'Proyek PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Proyek')
+@section('title3', 'Tambah Proyek')
 @section('content')
 
     <div class="container">
@@ -13,7 +16,6 @@
             </div>
         @endif
         <div class="container">
-            <h1 style="text-align: center" class="mt-3 mb-3">Tambah Proyek</h1>
             <a href="{{ route('proyek.index') }}" class="btn btn-primary btn-sm mb-3">Kembali</a>
             <div class="card">
                 <div class="card-body p-3">

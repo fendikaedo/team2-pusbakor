@@ -31,7 +31,7 @@
                 <td>{{ $p->nib }}</td>
                 <td>{{ $p->npwp }}</td>
                 <td class="nama_perusahaan">{{ $p->nama_perusahaan }}</td>
-                <td class="jenis_perusahaan">{{ $p['jenis_perusahaan']['jenis_perusahaan'] }}</td>
+                <td class="jenis_perusahaan">{{ $p->jenis_perusahaan->jenis_perusahaan }}</td>
                 <td>
                     <form action="{{ route('perusahaan.destroy', $p->id) }}" method="POST">
                         @method('DELETE')

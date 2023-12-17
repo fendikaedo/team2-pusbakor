@@ -19,7 +19,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{asset ('img/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
     <title>
         PUSBAKOR
     </title>
@@ -43,18 +43,23 @@
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-primary-100">
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-dark"
+<body class="g-sidenav-show  bg-gray-100">
+    <aside
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-dark"
         id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="#" target="_blank">
-                <img src="{{ asset('img/logo-ct-dark.png') }}" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold text-white">PUSBAKOR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
+                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg>
+                <!--<img src="{{ asset('img/logo-pusbakor.jpg') }}" class="navbar-brand-img h-100" alt="main_logo">-->
+                <span class="ms-1 font-weight-bold text-white">Hi, {{ auth()->user()->name }}</span>
             </a>
         </div>
-        <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -356,17 +361,20 @@
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            navbar-scroll="true">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl bg-light mt-3"
+            id="navbarBlur" navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{route('dashboard.index')}}">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark"
+                                href="{{ route('dashboard.index') }}">
                                 @yield('title1')</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">
+                        <li class="breadcrumb-item text-sm text-dark" aria-current="page">
                             @yield('title2')</li>
+                        <li class="breadcrumb-item text-sm"><a class="text-dark" href="#">
+                                @yield('title3')</a></li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                    <h6 class="font-weight-bolder mb-0">PUSBAKOR</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -500,17 +508,17 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        @endif
-                    <div class="card mb-4">
-                        <div class="card-header pb-0">
+                    @if (session('success'))
+                        <div class="alert alert-success font-weight-bold">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close float-end btn-sm btn-dark" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
+                    <div class="card mb-4 shadow bg-light">
+                        <div class="card-header pb-0 bg-light">
                             <h3>@yield('title')</h3>
                         </div>
-
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table p-4 mb-0">

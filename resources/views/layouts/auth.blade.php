@@ -38,7 +38,7 @@
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="">
+<body class="bg-light">
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
@@ -61,9 +61,9 @@
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
                                 <li class="nav-item">
-                                    <a class="nav-link me-2" href="{{route('register')}}">
+                                    <a class="nav-link me-2" href="{{route('login')}}">
                                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                        Sign Up
+                                        Sign In
                                     </a>
                                 </li>
                             </ul>
@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    <main class="main-content  mt-0">
+    <main class="main-content mt-0">
         @yield('content')
     </main>
 

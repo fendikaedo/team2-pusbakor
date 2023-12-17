@@ -13,8 +13,9 @@ class PerusahaanController extends Controller
      */
     public function index()
     {
-        $perusahaan = Perusahaan::paginate(10);
-        return view('pusbakor.perusahaan.index', ['perusahaan' => $perusahaan]);
+        return view('pusbakor.perusahaan.index')->with([
+            'perusahaan' => Perusahaan::paginate(10),
+        ]);
     }
 
     /**
@@ -23,8 +24,8 @@ class PerusahaanController extends Controller
     public function create()
     {
         $perusahaan = Perusahaan::all();
-        $jenis_perusahaan = Jenis_Perusahaan::all();
-        return view('pusbakor.perusahaan.create', ['jenis_perusahaan' => $jenis_perusahaan, 'perusahaan' => $perusahaan]);
+        $jenis_perusahaan_id = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.create', ['jenis_perusahaan_id' => $jenis_perusahaan_id, 'perusahaan' => $perusahaan]);
     }
 
     /**
@@ -44,15 +45,14 @@ class PerusahaanController extends Controller
             $perusahaan->nib = $request->nib;
             $perusahaan->npwp = $request->npwp;
             $perusahaan->nama_perusahaan = $request->nama_perusahaan;
-            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan;
-            $perusahaan->save();
-
-            return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
-        } else {
-            // Validasi gagal, tambahkan logika jika diperlukan
-            return back()->withInput()->withErrors($request);
-        }
+            $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
+            if ($perusahaan->save()) {
+                return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
+            } else {
+                return back()->with('error', 'Gagal Menambahkan Perusahaan');
+            }
     }
+}
 
     /**
      * Display the specified resource.
@@ -68,8 +68,8 @@ class PerusahaanController extends Controller
     public function edit(string $id)
     {
         $perusahaan = Perusahaan::find($id);
-        $jenis_perusahaan = Jenis_Perusahaan::all();
-        return view('pusbakor.perusahaan.edit', ['jenis_perusahaan' => $jenis_perusahaan, 'perusahaan' => $perusahaan]);
+        $jenis_perusahaan_id = Jenis_Perusahaan::all();
+        return view('pusbakor.perusahaan.edit', ['jenis_perusahaan_id' => $jenis_perusahaan_id, 'perusahaan' => $perusahaan]);
     }
 
     /**
@@ -91,12 +91,13 @@ class PerusahaanController extends Controller
             $perusahaan->nama_perusahaan = $request->nama_perusahaan;
             $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
             $perusahaan->save();
-            return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Dirubah');
-        } else {
-            // Validasi gagal, tambahkan logika jika diperlukan
-            return back()->withInput()->withErrors($request);
-        }
+            if ($perusahaan->save()) {
+                return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Dirubah');
+            } else {
+                return back()->with('error', 'Gagal Menambahkan Perusahaan');
+            }
     }
+}
 
 
     /**

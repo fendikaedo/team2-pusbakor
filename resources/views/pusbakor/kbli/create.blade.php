@@ -1,5 +1,8 @@
 @extends('layouts.home')
-
+@section('title', 'KBLI PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'KBLI')
+@section('title3', 'Tambah KBLI')
 @section('content')
 <div class="container">
     <h1 style="text-align: center" class="mt-3 mb-3">Tambah KBLI</h1>

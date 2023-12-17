@@ -1,8 +1,10 @@
 @extends('layouts.home')
-
+@section('title', 'Modal PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Modal')
+@section('title3', 'Tambah Modal')
 @section('content')
 <div class="container">
-    <h1 style="text-align: center" class="mt-3 mb-3">Tambah Status Modal</h1>
     <a href="{{ route('modal.index') }}" class="btn btn-primary btn-sm mb-3">Kembali</a>
     <div class="card">
         <div class="card-body p-3">

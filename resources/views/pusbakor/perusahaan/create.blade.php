@@ -1,10 +1,10 @@
 @extends('layouts.home')
-
+@section('title', 'Perusahaan PUSBAKOR')
+@section('title1', 'Home')
+@section('title2', 'Perusahaan')
+@section('title3', 'Tambah Perusahaan')
 @section('content')
-
-
     <div class="container">
-        <h1 style="text-align: center" class="mt-3 mb-3">Tambah Perusahaan</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -19,7 +19,6 @@
         <div class="card">
             <div class="card-body p-3">
                 <form action="{{ route('perusahaan.store') }}" method="POST">
-                    @method('post')
                     @csrf
                     <div class="mb-3">
                         <label for="nib" class="form-label"><b>NIB</b></label>
@@ -38,10 +37,10 @@
                             name="nama_perusahaan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_perusahaan_id" class="form-label"><b>Jenis Perusahaan</b></label>
+                        <label for="jenis_perusahaan" class="form-label"><b>Jenis Perusahaan</b></label>
                         <select class="custom-select" name="jenis_perusahaan_id" required>
                             <option selected>Pilih Jenis Perusahaan</option>
-                            @foreach ($jenis_perusahaan as $jp)
+                            @foreach ($jenis_perusahaan_id as $jp)
                                 <option value="{{ $jp['id'] }}"
                                     {{ old('jenis_perusahaan_id') == $jp['id'] ? 'selected' : '' }}>
                                     {{ $jp['jenis_perusahaan'] }}
