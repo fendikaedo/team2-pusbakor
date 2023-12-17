@@ -1,7 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Proyek;
+use App\Models\Perusahaan;
+use App\Models\Kecamatan;
+use App\Models\Desa;
+use App\Models\Jenis_Perusahaan;
+use App\Charts\PerusahaanChart;
 
+use App\Charts\ProyekChart;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -9,9 +16,32 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(PerusahaanChart $chart,ProyekChart $ProyekChart)
     {
-        return view("dashboard.index");
+        $totalProyek = Proyek::count();
+        $totalPerusahaan = Perusahaan::count();
+        $totalKecamatan = Kecamatan::count();
+        $totalDesa = Desa::count();
+
+        //Chart Perusahaan
+        $jenisPerusahaan = Jenis_Perusahaan::all();
+        foreach ($jenisPerusahaan as $jenis) {
+            $jumlahPerusahaan = Perusahaan::where('jenis_perusahaan_id', $jenis->id)->count();
+            $data[$jenis->jenis_perusahaan] = $jumlahPerusahaan;
+        }
+        $data = [];
+
+        //Chart Proyek
+        //$kecamatan = Kecamatan::all();
+        //foreach ($kecamatan as $kec) {
+            //$kecamatan= Proyek::where('kecamatan_id', $kec->id)->count();
+           //$data1[$kec->nama_kecamatan] = $kecamatan;
+        //}
+        //$data1 = [];
+
+        $data['chart'] = $chart->build();
+        //$data1['ProyekChart'] = $ProyekChart->build();
+        return view("dashboard.index",$data,compact('totalPerusahaan','totalKecamatan','totalDesa','totalProyek'));
     }
 
     /**

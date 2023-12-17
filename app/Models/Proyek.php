@@ -2,6 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Desa;
+use App\Models\Perusahaan;
+use App\Models\Kbli;
+use App\Models\Skala_Usaha;
+use App\Models\Kecamatan;
+use App\Models\Resiko;
+use App\Models\Modal;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +17,21 @@ class Proyek extends Model
 {
     use HasFactory;
     protected $table = 'Proyek';
+    protected $fillable = [
+        'longitude',
+        'latitude',
+        'alamat',
+        'investasi',
+        'perusahaan_id',
+        'modal_id',
+        'resiko_id',
+        'skala_usaha_id',
+        'kecamatan_id',
+        'desa_id',
+        'kbli_id',
+    ];
     protected $guarded = 'id';
+    protected $primaryKey = 'id';
 
     public function perusahaan()
     {
