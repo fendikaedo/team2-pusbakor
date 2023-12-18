@@ -3,12 +3,8 @@
 @section('title1', 'Home')
 @section('title2', 'Profile')
 @section('content')
-    <div class="container-fluid">
-        <div class="page-header min-height-300 border-radius-xl mt-4"
-            style="background-image: url('{{ asset('img/curved-images/curved0.jpg') }}'); background-position-y: 50%;">
-            <span class="mask bg-gradient-primary opacity-6"></span>
-        </div>
-        <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+    <div class="container-fluid mt-7">
+        <div class="card card-body bg-gradient-info mx-4 mt-n6 overflow-hidden col-auto">
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
@@ -18,7 +14,7 @@
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                        <h5 class="mb-1">
+                        <h5 class="mb-1 font-weight-bold">
                             {{ auth()->user()->name }}
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
@@ -177,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-4">
+            <div class="col-12 col-xl-4 text-dark">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
@@ -185,7 +181,7 @@
                                 <h6 class="mb-0">Profile Information</h6>
                             </div>
                             <div class="col-md-4 text-end">
-                                <a href="javascript:;">
+                                <a href="#" target="_self">
                                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Edit Profile"></i>
                                 </a>

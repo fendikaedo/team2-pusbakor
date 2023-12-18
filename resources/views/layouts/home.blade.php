@@ -524,7 +524,7 @@
                                 <table class="table p-4 mb-0 text-white">
                                     @yield('content')
                                 </table>
-                                <div class="container m-1">
+                                <div class="card-footer m-1">
                                     @yield('pagination')
 
                                 </div>
