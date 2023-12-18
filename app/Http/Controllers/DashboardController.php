@@ -7,7 +7,6 @@ use App\Models\Kecamatan;
 use App\Models\Desa;
 use App\Models\Jenis_Perusahaan;
 use App\Charts\PerusahaanChart;
-
 use App\Charts\ProyekChart;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(PerusahaanChart $chart,ProyekChart $ProyekChart)
+    public function index(PerusahaanChart $PerusahaanChart,ProyekChart $ProyekChart)
     {
         $totalProyek = Proyek::count();
         $totalPerusahaan = Perusahaan::count();
@@ -27,21 +26,22 @@ class DashboardController extends Controller
         $jenisPerusahaan = Jenis_Perusahaan::all();
         foreach ($jenisPerusahaan as $jenis) {
             $jumlahPerusahaan = Perusahaan::where('jenis_perusahaan_id', $jenis->id)->count();
-            $data[$jenis->jenis_perusahaan] = $jumlahPerusahaan;
+            $data2[$jenis->jenis_perusahaan] = $jumlahPerusahaan;
         }
-        $data = [];
+        $data2 = [];
 
-        //Chart Proyek
         //$kecamatan = Kecamatan::all();
         //foreach ($kecamatan as $kec) {
-            //$kecamatan= Proyek::where('kecamatan_id', $kec->id)->count();
-           //$data1[$kec->nama_kecamatan] = $kecamatan;
+            //$jumlahProyek = Proyek::where('kecamatan_id', $kec->id)->count();
+       //     $data1[$kec->nama_kecamatan] = $jumlahPerusahaan;
         //}
         //$data1 = [];
-
-        $data['chart'] = $chart->build();
         //$data1['ProyekChart'] = $ProyekChart->build();
-        return view("dashboard.index",$data,compact('totalPerusahaan','totalKecamatan','totalDesa','totalProyek'));
+        $data2['PerusahaanChart'] = $PerusahaanChart->build();
+        return view("dashboard.index",$data2,compact('totalPerusahaan','totalKecamatan','totalDesa','totalProyek'));
+    }
+    private function createProyekChart(){
+
     }
 
     /**

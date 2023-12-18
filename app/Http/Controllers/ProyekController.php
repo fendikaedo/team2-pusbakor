@@ -17,11 +17,16 @@ class ProyekController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pusbakor.proyek.index')->with([
-            'proyek' => Proyek::paginate(10),
-        ]);
+        if ($request->has('search')) {
+            $namaPerusahaan = $request->search;
+            $perusahaanId = Perusahaan::where('nama_perusahaan', 'LIKE', '%' . $namaPerusahaan . '%')->pluck('id')->toArray();
+            $proyek = Proyek::whereIn('perusahaan_id',$perusahaanId)->paginate(10);
+        }else{
+            $proyek = Proyek::paginate(10);
+        }
+        return view('pusbakor.proyek.index',compact('proyek'));
     }
 
     /**

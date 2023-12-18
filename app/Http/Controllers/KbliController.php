@@ -10,11 +10,14 @@ class KbliController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pusbakor.kbli.index')->with([
-            'kbli' => Kbli::paginate(10),
-        ]);
+        if ($request->has('search')) {
+            $kbli = Kbli::where('judul','LIKE','%' .$request->search.'%')->paginate(10);
+        }else{
+            $kbli = Kbli::paginate(10);
+        }
+        return view('pusbakor.kbli.index',compact('kbli'));
     }
 
     /**

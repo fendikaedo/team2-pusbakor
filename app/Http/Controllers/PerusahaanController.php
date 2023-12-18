@@ -11,11 +11,14 @@ class PerusahaanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pusbakor.perusahaan.index')->with([
-            'perusahaan' => Perusahaan::paginate(10),
-        ]);
+        if ($request->has('search')) {
+            $perusahaan = Perusahaan::where('nama_perusahaan','LIKE','%' .$request->search.'%')->paginate(10);
+        }else{
+            $perusahaan = Perusahaan::paginate(10);
+        }
+        return view('pusbakor.perusahaan.index',compact('perusahaan'));
     }
 
     /**

@@ -8,8 +8,8 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card bg-dark">
-                    <div class="card-body p-3">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body bg-transparent p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card bg-dark">
-                    <div class="card-body p-3">
+                <div class="card bg-gradient-dark">
+                    <div class="card-body bg-transparent p-3">
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card bg-dark">
+                <div class="card bg-gradient-dark">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card bg-dark">
+                <div class="card bg-gradient-dark">
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
@@ -104,8 +104,8 @@
                 </div>
             </div>
             <div class="col-lg-12 mt-4">
-                <div class="card z-index-2 bg-dark">
-                    <div class="card-header pb-0 bg-dark">
+                <div class="card z-index-2 bg-gradient-dark">
+                    <div class="card-header pb-0 bg-gradient-dark">
                         <h6 class="text-white">Proyek</h6>
                         <p class="text-sm">
                             <i class="fa fa-arrow-up text-success"></i>
@@ -116,8 +116,8 @@
 
                     </div>
                 </div>
-                <div class="card z-index-2 bg-dark mt-4">
-                    <div class="card-header pb-0 bg-dark">
+                <div class="card z-index-2 bg-gradient-dark mt-4">
+                    <div class="card-header pb-0 bg-gradient-dark">
                         <h6 class="text-white">Perusahaan</h6>
                         <p class="text-sm">
                             <i class="fa fa-arrow-up text-success"></i>
@@ -125,7 +125,7 @@
                         </p>
                     </div>
                     <div class="card-body p-1 text-dark">
-                        {!! $chart->container() !!}
+                        {!! $PerusahaanChart->container() !!}
                     </div>
                 </div>
             </div>
@@ -134,9 +134,8 @@
 @endsection
 @section('js')
     <script>
-        // Fungsi untuk melakukan permintaan ke endpoint dan menampilkan hasilnya\
         function updateJumlahProyek() {
-            fetch('/path/ke/endpoint/laravel')
+            fetch('/path/ke/endpoint/laravel/proyek') // Ganti dengan path endpoint proyek
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('totalProyek').innerText = data.totalProyek;
@@ -144,13 +143,8 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        // Panggil fungsi saat halaman dimuat
-        window.onload = function() {
-            updateJumlahProyek();
-        }
-
         function updateJumlahPerusahaan() {
-            fetch('/path/ke/endpoint/laravel')
+            fetch('/path/ke/endpoint/laravel/perusahaan') // Ganti dengan path endpoint perusahaan
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('totalPerusahaan').innerText = data.totalPerusahaan;
@@ -158,13 +152,8 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        // Panggil fungsi saat halaman dimuat
-        window.onload = function() {
-            updateJumlahPerusahaan();
-        }
-
         function updateJumlahKecamatan() {
-            fetch('/path/ke/endpoint/laravel')
+            fetch('/path/ke/endpoint/laravel/kecamatan') // Ganti dengan path endpoint kecamatan
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('totalKecamatan').innerText = data.totalKecamatan;
@@ -172,13 +161,8 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        // Panggil fungsi saat halaman dimuat
-        window.onload = function() {
-            updateJumlahKecamatan();
-        }
-
-        function updateJumlahPerusahaan() {
-            fetch('/path/ke/endpoint/laravel')
+        function updateJumlahDesa() {
+            fetch('/path/ke/endpoint/laravel/desa') // Ganti dengan path endpoint desa
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('totalDesa').innerText = data.totalDesa;
@@ -188,11 +172,12 @@
 
         // Panggil fungsi saat halaman dimuat
         window.onload = function() {
+            updateJumlahProyek();
+            updateJumlahPerusahaan();
+            updateJumlahKecamatan();
             updateJumlahDesa();
         };
     </script>
-
-
-    <script src="{{ $chart->cdn()}}"></script>
-    {{ $chart->script() }}
+    <script src="{{ $PerusahaanChart->cdn() }}"></script>
+    {{ $PerusahaanChart->script() }}
 @endsection

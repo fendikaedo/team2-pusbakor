@@ -10,11 +10,14 @@ class KecamatanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pusbakor.kecamatan.index')->with([
-            'kecamatan' => Kecamatan::paginate(10),
-        ]);
+        if ($request->has('search')) {
+            $kecamatan = Kecamatan::where('nama_kecamatan','LIKE','%' .$request->search.'%')->paginate(10);
+        }else{
+            $kecamatan = Kecamatan::paginate(10);
+        }
+        return view('pusbakor.kecamatan.index',compact('kecamatan'));
     }
 
     /**

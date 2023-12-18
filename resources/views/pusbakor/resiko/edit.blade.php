@@ -5,7 +5,6 @@
 @section('title3', 'Edit Resiko')
 @section('content')
 <div class="container">
-    <h1 style="text-align: center" class="mt-3 mb-3">Tambah Resiko Proyek</h1>
     <a href="{{ route('resiko.index') }}" class="btn btn-primary btn-sm mb-3">Kembali</a>
     <div class="card">
         <div class="card-body p-3">

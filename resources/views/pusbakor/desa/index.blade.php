@@ -4,6 +4,7 @@
 @section('title1', 'Home')
 @section('title2', 'Kelurahan/Desa')
 @section('content')
+<div class="ms-md-auto pe-md-3 d-flex align-items-center">
     <div class="container font-weight-bold text-dark">
         <a href="/desa/create" class="btn btn-success btn-sm m-3">
             <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
@@ -12,8 +13,15 @@
                     d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
             </svg>
         </a>
-        <span>Tambah Kelurahan/Desa</span>
+        <span class="text-white">Tambah Desa</span>
     </div>
+    <form action="/desa" method="GET" class="col-4">
+        <div class="input-group">
+            <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+            <input type="search" name="search" class="form-control" placeholder="Search Nama Kelurahan/Desa">
+        </div>
+    </form>
+</div>
 
     <thead>
         <tr>

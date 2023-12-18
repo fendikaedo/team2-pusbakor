@@ -10,11 +10,14 @@ class DesaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pusbakor.desa.index')->with([
-            'Desa' => Desa::paginate(10),
-        ]);
+        if ($request->has('search')) {
+            $Desa = Desa::where('nama_desa','LIKE','%' .$request->search.'%')->paginate(10);
+        }else{
+            $Desa = Desa::paginate(10);
+        }
+        return view('pusbakor.desa.index',compact('Desa'));
     }
 
     /**

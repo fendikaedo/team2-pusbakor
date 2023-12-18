@@ -43,9 +43,9 @@
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show bg-gradient-light">
     <aside
-        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-dark"
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
         id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -63,7 +63,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  active" href="{{ route('dashboard.index') }}">
+                    <a class="nav-link bg-gradient-info active" href="{{ route('dashboard.index') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -86,7 +86,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Dashboard</span>
+                        <span class="ms-1 text-white font-weight-bold">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item mt-3">
@@ -361,20 +361,20 @@
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl bg-light mt-3"
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl bg-gradient-dark mt-3"
             id="navbarBlur" navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark"
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
                                 href="{{ route('dashboard.index') }}">
                                 @yield('title1')</a></li>
-                        <li class="breadcrumb-item text-sm text-dark" aria-current="page">
+                        <li class="breadcrumb-item text-sm text-white" aria-current="page">
                             @yield('title2')</li>
-                        <li class="breadcrumb-item text-sm"><a class="text-dark" href="#">
+                        <li class="breadcrumb-item text-sm"><a class="text-white" href="#">
                                 @yield('title3')</a></li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">PUSBAKOR</h6>
+                    <h6 class="font-weight-bolder mb-0 text-white">PUSBAKOR</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -385,7 +385,7 @@
                         </div>
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
+                        <li class="nav-item d-flex align-items-end">
                             {{-- <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -399,7 +399,7 @@
                                 onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign Out</span>
+                                <span class="d-sm-inline d-none text-white">Sign Out</span>
                             </a>
                         </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -511,28 +511,29 @@
                     @if (session('success'))
                         <div class="alert alert-success font-weight-bold">
                             {{ session('success') }}
-                            <button type="button" class="btn-close float-end btn-sm btn-dark" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close float-end btn-sm btn-dark"
+                                data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <div class="card mb-4 shadow bg-light">
-                        <div class="card-header pb-0 bg-light">
-                            <h3>@yield('title')</h3>
+                    <div class="card mb-4 shadow bg-gradient-dark text-white">
+                        <div class="card-header pb-0 bg-transparent text-white">
+                            <h3 class="text-warning">@yield('title')</h3>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
+                        <div class="card-body px-0 pt-0 pb-2 bg-gradient-dark text-white">
                             <div class="table-responsive p-0">
-                                <table class="table p-4 mb-0">
+                                <table class="table p-4 mb-0 text-white">
                                     @yield('content')
                                 </table>
+                                <div class="container m-1">
+                                    @yield('pagination')
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="pagination p-3">
-                            @yield('pagination')
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer pt-3  ">
+            <footer class="footer pt-3">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-lg-between">
                         <div class="col-lg-6 mb-lg-0 mb-4">
@@ -572,7 +573,7 @@
             </footer>
         </div>
     </main>
-    <div class="fixed-plugin">
+    {{-- <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"> </i>
         </a>
@@ -649,7 +650,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @yield('js')
     <!--   Core JS Files   -->
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
