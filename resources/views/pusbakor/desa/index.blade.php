@@ -33,7 +33,7 @@
     <tbody>
         @foreach ($Desa as $d)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $d->id }}</td>
                 <td>{{ $d->nama_desa }}</td>
                 <td>
                     <form action="{{ route('desa.destroy', $d->id) }}" method="POST">

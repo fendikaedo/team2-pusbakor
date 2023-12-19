@@ -24,7 +24,7 @@
     <tbody>
         @foreach ($modal as $m)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $m->id }}</td>
                 <td>{{ $m->status_modal }}</td>
                 <td>
                     <form action="{{ route('modal.destroy', $m->id) }}" method="POST">

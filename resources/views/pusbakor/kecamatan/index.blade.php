@@ -36,7 +36,7 @@
     <tbody>
         @foreach ($kecamatan as $kec)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $kec->id }}</td>
                 <td>{{ $kec->nama_kecamatan }}</td>
                 <td>
                     <form action="{{ route('kecamatan.destroy', $kec->id) }}" method="POST">

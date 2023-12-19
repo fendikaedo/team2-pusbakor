@@ -34,7 +34,7 @@
     <tbody>
         @foreach ($kbli as $k)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $k->id }}</td>
                 <td>{{ $k->kode_kbli }}</td>
                 <td class="judul">{{ $k->judul }}</td>
                 <td>{{ $k->pembina }}</td>

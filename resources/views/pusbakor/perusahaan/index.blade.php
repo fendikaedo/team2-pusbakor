@@ -44,7 +44,7 @@
     <tbody>
         @foreach ($perusahaan as $p)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $p->id }}</td>
                 <td>{{ $p->nib }}</td>
                 <td>{{ $p->npwp }}</td>
                 <td class="nama_perusahaan">{{ $p->nama_perusahaan }}</td>

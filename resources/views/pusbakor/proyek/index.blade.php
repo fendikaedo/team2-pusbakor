@@ -42,7 +42,7 @@
     <tbody>
         @foreach ($proyek as $pro)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $pro->id }}</td>
                 <td>{{ $pro->longitude }}</td>
                 <td>{{ $pro->latitude }}</td>
                 <td>{{ $pro->alamat }}</td>

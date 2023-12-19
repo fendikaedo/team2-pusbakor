@@ -24,7 +24,7 @@
     <tbody>
         @foreach ($skala_usaha as $su)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $su->id }}</td>
                 <td>{{ $su->skala_usaha }}</td>
                 <td>
                     <form action="{{ route('skalausaha.destroy', $su->id) }}" method="POST">

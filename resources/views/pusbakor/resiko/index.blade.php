@@ -24,7 +24,7 @@
     <tbody>
         @foreach ($resiko as $r)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $r->id }}</td>
                 <td>{{ $r->resiko_proyek }}</td>
                 <td>
                     <form action="{{ route('resiko.destroy', $r->id) }}" method="POST">

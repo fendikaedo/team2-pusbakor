@@ -24,7 +24,7 @@
     <tbody>
         @foreach ($jenis_perusahaan as $jp)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $jp->id }}</td>
                 <td class="jenis">{{ $jp->jenis_perusahaan }}</td>
                 <td>
                     <form action="{{ route('jenis_perusahaan.destroy', $jp->id) }}" method="POST">
