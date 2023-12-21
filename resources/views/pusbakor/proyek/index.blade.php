@@ -4,7 +4,7 @@
 @section('title1', 'Home')
 @section('title2', 'Proyek')
 @section('content')
-<div class="ms-md-auto pe-md-3 d-flex align-items-center">
+<div class="ms-md-auto pe-md-3 d-flex align-items-center fixed">
     <div class="container font-weight-bold text-dark">
         <a href="/proyek/create" class="btn btn-success btn-sm m-3">
             <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14"
@@ -45,7 +45,7 @@
                 <td>{{ $pro->id }}</td>
                 <td>{{ $pro->longitude }}</td>
                 <td>{{ $pro->latitude }}</td>
-                <td>{{ $pro->alamat }}</td>
+                <td class="text-start">{{ $pro->alamat }}</td>
                 <td>{{ $pro->investasi }}</td>
                 <td>{{ $pro->perusahaan->nama_perusahaan }}</td>
                 <td>{{ $pro->modal->status_modal }}</td>
@@ -53,7 +53,7 @@
                 <td>{{ $pro->skala_usaha->skala_usaha }}</td>
                 <td>{{ $pro->kecamatan->nama_kecamatan }}</td>
                 <td>{{ $pro->desa->nama_desa }}</td>
-                <td>{{ $pro->kbli->judul }}</td>
+                <td class="text-start">{{ $pro->kbli->judul }}</td>
                 <td>
                     <form action="{{ route('proyek.destroy', $pro->id) }}" method="POST">
                         @method('DELETE')

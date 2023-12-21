@@ -318,26 +318,26 @@
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl bg-gradient-dark mt-3"
             id="navbarBlur" navbar-scroll="true">
-            <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
-                                href="{{ route('dashboard.index') }}">
-                                @yield('title1')</a></li>
-                        <li class="breadcrumb-item text-sm text-white" aria-current="page">
-                            @yield('title2')</li>
-                        <li class="breadcrumb-item text-sm"><a class="text-white" href="#">
-                                @yield('title3')</a></li>
-                    </ol>
-                    <h6 class="font-weight-bolder mb-0 text-white">PUSBAKOR</h6>
-                </nav>
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        <div class="input-group">
-                            <span class="input-group-text text-body"><i class="fas fa-search"
-                                    aria-hidden="true"></i></span>
-                        </div>
-                    </div>
+            <div class="col">
+                <div class="container-fluid py-1 px-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
+                                    href="{{ route('dashboard.index') }}">
+                                    @yield('title1')</a></li>
+                            <li class="breadcrumb-item text-sm text-white" aria-current="page">
+                                @yield('title2')</li>
+                            <li class="breadcrumb-item text-sm"><a class="text-white" href="#">
+                                    @yield('title3')</a></li>
+                        </ol>
+                        <h6 class="font-weight-bolder mb-0 text-white">Welcome to website PUSBAKOR</h6>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col m-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 float-end" id="navbar">
+
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-flex align-items-end">
                             {{-- <a class="dropdown-item" href="{{ route('logout') }}"
@@ -366,7 +366,7 @@
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0">
+                            <a href="#" class="nav-link text-body p-0">
                                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                             </a>
                         </li>
@@ -458,17 +458,32 @@
                 </div>
             </div>
         </nav>
+
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
                     @if (session('success'))
-                        <div class="alert alert-success font-weight-bold">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close float-end btn-sm btn-dark"
-                                data-bs-dismiss="alert" aria-label="Close"></button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="successLogin" tabindex="-1" aria-labelledby="modalLogin"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Login Successfully</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{ session('success') }}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @endif
+
                     <div class="card mb-4 shadow bg-gradient-dark text-white">
                         <div class="card-header pb-0 bg-transparent text-white">
                             <h3 class="text-warning">@yield('title')</h3>
@@ -499,29 +514,29 @@
                                 <script>
                                     document.write(new Date().getFullYear())
                                 </script>,
-                                made with <i class="fa fa-heart"></i> by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold"
-                                    target="_blank">ForTim</a>
-                                for a better web.
+                                Made by
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Team
+                                    2 PKJ C</a>
+                                with working in group form.
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com" class="nav-link text-muted"
-                                        target="_blank">Creative Tim</a>
+                                    <a href="https://mail.google.com/" class="nav-link text-muted"
+                                        target="_blank">Email</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
-                                        target="_blank">About Us</a>
+                                    <a href="https://instagram.com/" class="nav-link text-muted"
+                                        target="_blank">Instagram</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
-                                        target="_blank">Blog</a>
+                                    <a href="https://facebook.com/" class="nav-link text-muted"
+                                        target="_blank">Facebook</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                                        target="_blank">License</a>
+                                    <a href="https://twitter.com/" class="nav-link pe-0 text-muted"
+                                        target="_blank">Twitter</a>
                                 </li>
                             </ul>
                         </div>
@@ -530,7 +545,7 @@
             </footer>
         </div>
     </main>
-    <div class="fixed-plugin">
+    {{-- <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"> </i>
         </a>
@@ -607,9 +622,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     @yield('js')
     <!--   Core JS Files   -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successLogin = new bootstrap.Modal(document.getElementById('successLogin'));
+            successLogin.show();
+        });
+    </script>
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
     <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,7 +11,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $users = User::paginate(10);
+        return view('profile.index',compact('users'));
     }
 
     /**
@@ -35,7 +36,8 @@ class ProfileController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $users = User::findOrFail($id);
+        return view('profile.index',compact('users'));
     }
 
     /**

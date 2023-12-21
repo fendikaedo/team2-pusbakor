@@ -125,29 +125,29 @@
         <div class="row mx-1">
             <div class="col mb-3">
                 <div class="card z-index-2 bg-gradient-dark shadow">
-                    <div class="card-header pb-0 bg-gradient-dark">
-                        <h6 class="text-white">Proyek</h6>
+                    <div class="card-header pb-0 bg-transparent">
+                        <h6 class="text-success">Proyek</h6>
                         <p class="text-sm">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold text-white">Total Proyek dihitung dari beberapa Kecamatan</span>
+                            <span class="font-weight-bold text-white">Total Proyek dihitung dari setiap Kecamatan</span>
                         </p>
                     </div>
-                    <div class="card-body p-1">
-                        {{-- {!! $ProyekChart->container() !!} --}}
+                    <div class="card-body p-1 text-dark">
+                        {!! $data1['ProyekChart']->container() !!}
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="card z-index-2 bg-gradient-dark shadow">
                     <div class="card-header pb-0 bg-transparent">
-                        <h6 class="text-white">Perusahaan</h6>
+                        <h6 class="text-success">Perusahaan</h6>
                         <p class="text-sm">
                             <i class="fa fa-arrow-up text-success"></i>
                             <span class="font-weight-bold text-white">Total Perusahaan sesuai dengan Jenis Perusahaan</span>
                         </p>
                     </div>
                     <div class="card-body p-1 text-dark overflow-hidden">
-                        {!! $PerusahaanChart->container() !!}
+                        {!! $data2['PerusahaanChart']->container() !!}
                     </div>
                 </div>
             </div>
@@ -213,8 +213,8 @@
     </script>
     {{-- <script src="{{ $ProyekChart->cdn() }}"></script>
     {{ $ProyekChart->script() }} --}}
-    {{--<script src="{{ $ProyekChart->cdn() }}"></script>
-    {{ $ProyekChart->script() }} --}}
-    <script src="{{ $PerusahaanChart->cdn() }}"></script>
-    {{ $PerusahaanChart->script() }}
+    <script src="{{ $data1['ProyekChart']->cdn() }}"></script>
+    {{ $data1['ProyekChart']->script() }}
+    <script src="{{ $data2['PerusahaanChart']->cdn() }}"></script>
+    {{ $data2['PerusahaanChart']->script() }}
 @endsection

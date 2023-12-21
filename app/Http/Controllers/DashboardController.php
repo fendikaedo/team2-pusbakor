@@ -24,24 +24,9 @@ class DashboardController extends Controller
         $totalDesa = Desa::count();
         $totalUser = User::count();
 
-        //Chart Perusahaan
-        $jenisPerusahaan = Jenis_Perusahaan::all();
-        $data2 = [];
-        foreach ($jenisPerusahaan as $jenis) {
-            $jumlahPerusahaan = Perusahaan::where('jenis_perusahaan_id', $jenis->nama_perusahaan)->count();
-            $data2[$jenis->jenis_perusahaan] = $jumlahPerusahaan;
-        }
-
-        //Chart Proyek
-        //$proyek = Proyek::all();
-        //$data1 = [];
-        //foreach ($totalProyek as $proyek) {
-        //    $jumlahProyek = Kecamatan::where('nama_kecamatan', $proyek->id)->count();
-        //    $data1[$proyek->kecamatan_id] = $jumlahProyek;
-        //}
-        //$data1['ProyekChart'] = $ProyekChart->build();
+        $data1['ProyekChart'] = $ProyekChart->build();
         $data2['PerusahaanChart'] = $PerusahaanChart->build();
-        return view("dashboard.index",$data2,compact('totalPerusahaan','totalKecamatan','totalDesa','totalProyek','totalUser'));
+        return view("dashboard.index",compact('data1','data2','totalPerusahaan','totalKecamatan','totalDesa','totalProyek','totalUser'));
     }
 
     /**
@@ -63,7 +48,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request,string $id)
+    public function show(Request $request,string $id,ProyekChart $ProyekChart)
     {
         //
     }
@@ -92,3 +77,18 @@ class DashboardController extends Controller
         //
     }
 }
+
+//Chart Perusahaan
+        //$jenisPerusahaan = Jenis_Perusahaan::all();
+        //$data2 = [];
+        //foreach ($jenisPerusahaan as $jenis) {
+        //    $jumlahPerusahaan = Perusahaan::where('jenis_perusahaan_id', $jenis->nama_perusahaan)->count();
+        //    $data2[$jenis->jenis_perusahaan] = $jumlahPerusahaan;
+        //}
+        //Chart Proyek
+        //$proyek = Kecamatan::all();
+        //$data1 = [];
+        //foreach ($proyek as $pro) {
+        //    $jumlahProyek = Proyek::where('kecamatan_id', $pro->id)->count();
+        //    $data1[$pro->id] = $jumlahProyek;
+        //}

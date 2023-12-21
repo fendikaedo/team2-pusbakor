@@ -113,7 +113,7 @@
     </div>
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-12 col-xl-4">
+            <div class="col-12 col-xl-4 mt-3">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Platform Settings</h6>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-4 text-dark">
+            <div class="col-12 col-xl-4 text-dark mt-3">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
@@ -198,7 +198,7 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full
                                     Name:</strong> &nbsp;{{ auth()->user()->name }}
-                                </li>
+                            </li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong>
                                 &nbsp; (44) 123 1234 123</li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong>
@@ -222,45 +222,33 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-4">
+            <div class="col-12 col-xl-4 mt-3">
                 <div class="card h-100">
                     <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0">Conversations</h6>
+                        <h6 class="mb-0">Data Pengguna</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="{{asset ('img/ivana-square.jpg')}}" alt="kal"
-                                        class="border-radius-lg shadow">
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Ivanna</h6>
-                                    <p class="mb-0 text-xs">About files I can..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="{{asset ('img/team-4.jpg')}}" alt="kal" class="border-radius-lg shadow">
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Peterson</h6>
-                                    <p class="mb-0 text-xs">Have a great afternoon..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                            <li class="list-group-item border-0 d-flex align-items-center px-0">
-                                <div class="avatar me-3">
-                                    <img src="{{asset ('img/team-3.jpg')}}" alt="kal" class="border-radius-lg shadow">
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Nick Daniel</h6>
-                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
-                        </ul>
+                        <div class="row">
+                            <ul class="list-group">
+                                @foreach ($users as $user)
+                                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                        <div class="avatar me-3 col-2 mx-2">
+                                            <img src="{{ asset('img/ivana-square.jpg') }}" alt="kal"
+                                                class="border-radius-lg shadow">
+                                        </div>
+                                        <div class="d-flex align-items-start flex-column justify-content-center col">
+                                            <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                                        </div>
+                                        <div class="text-end col">
+                                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto"
+                                                href="{{ route('profile.show', $user->name) }}"><i
+                                                    class="ni-solid ni-user"></i>View Profile</a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            {{ $users->links('pagination::bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
             </div>

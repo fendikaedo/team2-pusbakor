@@ -16,10 +16,9 @@ class ProyekChart
     public function build(): \ArielMejiaDev\LarapexCharts\AreaChart
     {
         return $this->ProyekChart->areaChart()
-        ->addData('Proyek', \App\Models\Proyek::query()->inRandomOrder()->limit(10)->pluck('id')->toArray())
-        ->addData('Kecamatan', \App\Models\Proyek::query()->inRandomOrder()->limit(12)->pluck('kecamatan_id')->toArray())
+        ->addData('Total Proyek', \App\Models\Proyek::query()->inRandomOrder()->limit(12)->pluck('id')->toArray())
         ->setXAxis(\App\Models\Kecamatan::query()->inRandomOrder()->pluck('nama_kecamatan')->toArray())
         ->setFontColor('#ffffff')
-        ->setHeight(400);
+        ->setHeight(300);
     }
 }
