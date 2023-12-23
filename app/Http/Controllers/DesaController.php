@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Desa;
 use Illuminate\Http\Request;
 
@@ -41,9 +41,14 @@ class DesaController extends Controller
         if ($request) {
             $desa = new Desa();
             $desa->nama_desa = $request->nama_desa;
-            $desa->save();
+            if ($desa->save()) {
+                Alert::success('Success', 'Data Kelurahan/Desa Berhasil Ditambahkan!');
+                return redirect()->route('desa.index');
+            } else {
+                Alert::warning('Failed', 'Data Kelurahan/Desa Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('desa.index')->with('success', 'Kelurahan/Desa Berhasil Ditambahkan');
     }
 
     /**
@@ -75,9 +80,14 @@ class DesaController extends Controller
         if ($request) {
             $desa = Desa::find($id);
             $desa->nama_desa = $request->nama_desa;
-            $desa->save();
+            if ($desa->save()) {
+                Alert::success('Success', 'Data Kelurahan/Desa Berhasil Dirubah!');
+                return redirect()->route('desa.index');
+            } else {
+                Alert::warning('Failed', 'Data Kelurahan/Desa Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('desa.index')->with('success', 'Kelurahan/Desa Berhasil Dirubah');
     }
 
     /**
@@ -87,7 +97,7 @@ class DesaController extends Controller
     {
         $desa = Desa::find($id);
         $desa->delete();
-
-        return back()->with('success','Kelurahan/Desa Berhasil Dihapus');
+        Alert::success('Success', 'Data Kelurahan/Desa Berhasil Dihapus!');
+        return back();
     }
 }

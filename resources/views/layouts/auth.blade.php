@@ -39,6 +39,7 @@
 </head>
 
 <body class="bg-gradient-light">
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
@@ -61,7 +62,7 @@
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
                                 <li class="nav-item">
-                                    <a class="nav-link me-2 text-white" href="{{route('login')}}">
+                                    <a class="nav-link me-2 text-white" href="{{ route('login') }}">
                                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                         Sign In
                                     </a>
@@ -88,10 +89,10 @@
 
 
     <!--   Core JS Files   -->
-    <script src="{{asset ('js/core/popper.min.js')}}"></script>
-    <script src="{{asset ('js/core/bootstrap.min.js')}}"></script>
-    <script src="{{asset ('js/plugins/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset ('js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ asset('js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -104,7 +105,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{asset ('js/soft-ui-dashboard.min.js?v=1.0.7')}}"></script>
+    <script src="{{ asset('js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
 </body>
 
 </html>

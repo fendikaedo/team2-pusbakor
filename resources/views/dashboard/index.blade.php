@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="docs-info">
-                                            <h4 class="text-dark up mb-0"><b>Hi, {{ auth()->user()->name }}</h4>
+                                            <h4 class="text-white up mb-0"><b>Hi, {{ auth()->user()->name }}</h4>
                                             <p class="text-xs font-weight-bold">Please check our profile</p>
                                             <a href="{{ route('profile.index') }}" target="_self"
                                                 class="btn btn-dark btn-sm w-100 mb-0">Check

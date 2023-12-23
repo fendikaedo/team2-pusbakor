@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Kbli;
 use Illuminate\Http\Request;
 
@@ -45,9 +46,14 @@ class KbliController extends Controller
             $kbli->kode_kbli = $request->kode_kbli;
             $kbli->judul = $request->judul;
             $kbli->pembina = $request->pembina;
-            $kbli->save();
+            if ($kbli->save()) {
+                Alert::success('Success', 'Data KBLI Berhasil Ditambahkan!');
+                return redirect()->route('kbli.index');
+            } else {
+                Alert::warning('Failed', 'Data KBLI Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('kbli.index')->with('success', 'KBLI Berhasil Ditambahkan');
     }
 
     /**
@@ -83,9 +89,14 @@ class KbliController extends Controller
             $kbli->kode_kbli = $request->kode_kbli;
             $kbli->judul = $request->judul;
             $kbli->pembina = $request->pembina;
-            $kbli->save();
+            if ($kbli->save()) {
+                Alert::success('Success', 'Data KBLI Berhasil Dirubah!');
+                return redirect()->route('kbli.index');
+            } else {
+                Alert::warning('Failed', 'Data KBLI Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('kbli.index')->with('success', 'KBLI Berhasil Dirubah');
     }
 
     /**
@@ -95,7 +106,7 @@ class KbliController extends Controller
     {
         $kbli = Kbli::find($id);
         $kbli->delete();
-
-        return back()->with('success','KBLI Berhasil Dihapus');
+        Alert::success('Success', 'Data KBLI Berhasil Dihapus!');
+        return back();
     }
 }

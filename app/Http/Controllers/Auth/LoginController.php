@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -44,10 +44,11 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if (Auth::check()) {
-            Session::flash('success', 'Login telah berhasil, Selamat Datang ' . $user->name);
+            Alert::success('Login Success','Selamat Datang '.$user->name. ' di Website Pusbakor');
             return redirect()->intended($this->redirectPath());
         } else {
-            return redirect()->route('login')->withErrors(['error' => 'Email atau Password salah']);
+            Alert::error('Login Failed','Periksa Email atau Password anda apakah sudah benar');
+            return redirect()->route('login');
         }
     }
 }

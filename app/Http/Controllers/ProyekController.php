@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Desa;
 use App\Models\Kbli;
 use App\Models\Kecamatan;
@@ -22,11 +23,11 @@ class ProyekController extends Controller
         if ($request->has('search')) {
             $namaPerusahaan = $request->search;
             $perusahaanId = Perusahaan::where('nama_perusahaan', 'LIKE', '%' . $namaPerusahaan . '%')->pluck('id')->toArray();
-            $proyek = Proyek::whereIn('perusahaan_id',$perusahaanId)->paginate(10);
-        }else{
+            $proyek = Proyek::whereIn('perusahaan_id', $perusahaanId)->paginate(10);
+        } else {
             $proyek = Proyek::paginate(10);
         }
-        return view('pusbakor.proyek.index',compact('proyek'));
+        return view('pusbakor.proyek.index', compact('proyek'));
     }
 
     /**
@@ -87,9 +88,11 @@ class ProyekController extends Controller
             $proyek->desa_id = $request->desa_id;
             $proyek->kbli_id = $request->kbli_id;
             if ($proyek->save()) {
-                return redirect()->route('proyek.index')->with('success', 'Proyek Berhasil Ditambahkan');
+                Alert::success('Success', 'Data Proyek Berhasil Ditambahkan');
+                return redirect()->route('proyek.index');
             } else {
-                return back()->with('error', 'Gagal Menambahkan Proyek');
+                Alert::warning('Failed', 'Data Proyek Gagal Ditambahkan');
+                return back();
             }
         }
     }
@@ -160,9 +163,11 @@ class ProyekController extends Controller
             $proyek->desa_id = $request->desa_id;
             $proyek->kbli_id = $request->kbli_id;
             if ($proyek->save()) {
-                return redirect()->route('proyek.index')->with('success', 'Proyek Berhasil Dirubah');
+                Alert::success('Success', 'Data Proyek Berhasil Dirubah');
+                return redirect()->route('proyek.index');
             } else {
-                return back()->with('error', 'Gagal Menambahkan Proyek');
+                Alert::warning('Failed', 'Data Proyek Gagal Dirubah');
+                return back();
             }
         }
     }
@@ -174,7 +179,7 @@ class ProyekController extends Controller
     {
         $proyek = Proyek::find($id);
         $proyek->delete();
-
-        return back()->with('success', 'Proyek Berhasil Dihapus');
+        Alert::success('Success', 'Data Proyek Berhasil Dihapus!');
+        return back();
     }
 }

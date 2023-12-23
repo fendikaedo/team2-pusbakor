@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Skala_Usaha;
 use Illuminate\Http\Request;
 
@@ -38,9 +38,14 @@ class SkalaUsahaController extends Controller
         if ($request) {
             $skala_usaha = new Skala_Usaha();
             $skala_usaha->skala_usaha = $request->skala_usaha;
-            $skala_usaha->save();
+            if ($skala_usaha->save()) {
+                Alert::success('Success', 'Data Skala Usaha Berhasil Ditambahkan!');
+                return redirect()->route('skalausaha.index');
+            } else {
+                Alert::warning('Failed', 'Data Skala Usaha Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('skalausaha.index')->with('success', 'Skala Usaha Berhasil Ditambahkan');
     }
 
     /**
@@ -72,9 +77,14 @@ class SkalaUsahaController extends Controller
         if ($request) {
             $skala_usaha = Skala_Usaha::find($id);
             $skala_usaha->skala_usaha = $request->skala_usaha;
-            $skala_usaha->save();
+            if ($skala_usaha->save()) {
+                Alert::success('Success', 'Data Skala Usaha Berhasil Dirubah!');
+                return redirect()->route('skalausaha.index');
+            } else {
+                Alert::warning('Failed', 'Data Skala Usaha Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('skalausaha.index')->with('success', 'Skala Usaha Berhasil Ditambahkan');
     }
 
     /**
@@ -84,7 +94,7 @@ class SkalaUsahaController extends Controller
     {
         $skala_usaha = Skala_Usaha::find($id);
         $skala_usaha->delete();
-
-        return back()->with('success','Skala Usaha Berhasil Dihapus');
+        Alert::success('Success', 'Data Skala Usaha Berhasil Dihapus!');
+        return back();
     }
 }

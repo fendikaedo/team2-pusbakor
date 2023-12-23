@@ -37,7 +37,7 @@ Route::get('/', function () {
 
 
 // routes/web.php
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'guest:user'])->group(function () {
     Route::resource('profile', ProfileController::class);
     Route::resource('dashboard', DashboardController::class);
     Route::resource('tables', LayoutController::class);
@@ -51,7 +51,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('jenis_perusahaan', JenisPerusahaanController::class);
     Route::resource('perusahaan', PerusahaanController::class);
 });
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','guest:admin'])->group(function () {
     Route::get('/profile/{id}', [ProfileController::class, 'show']);
     Route::resource('profile', ProfileController::class);
     Route::resource('dashboard', DashboardController::class);

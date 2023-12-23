@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Resiko;
 use Illuminate\Http\Request;
 
@@ -38,9 +38,14 @@ class ResikoController extends Controller
         if ($request) {
             $resiko = new Resiko();
             $resiko->resiko_proyek = $request->resiko_proyek;
-            $resiko->save();
+            if ($resiko->save()) {
+                Alert::success('Success', 'Data Resiko Proyek Berhasil Ditambahkan!');
+                return redirect()->route('resiko.index');
+            } else {
+                Alert::warning('Failed', 'Data Resiko Proyek Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('resiko.index')->with('success', 'Resiko Proyek Berhasil Ditambahkan');
     }
 
     /**
@@ -72,9 +77,14 @@ class ResikoController extends Controller
         if ($request) {
             $resiko = Resiko::find($id);
             $resiko->resiko_proyek = $request->resiko_proyek;
-            $resiko->save();
+            if ($resiko->save()) {
+                Alert::success('Success', 'Data Resiko Proyek Berhasil Dirubah!');
+                return redirect()->route('resiko.index');
+            } else {
+                Alert::warning('Failed', 'Data Resiko Proyek Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('resiko.index')->with('success', 'Resiko Proyek Berhasil Dirubah');
     }
 
     /**
@@ -84,7 +94,7 @@ class ResikoController extends Controller
     {
         $resiko = Resiko::find($id);
         $resiko->delete();
-
-        return back()->with('success','Resiko Proyek Berhasil Dihapus');
+        Alert::success('Success','Data Resiko Proyek Berhasil Dihapus!');
+        return back();
     }
 }

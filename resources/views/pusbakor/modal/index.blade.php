@@ -27,7 +27,7 @@
                 <td>{{ $m->id }}</td>
                 <td>{{ $m->status_modal }}</td>
                 <td>
-                    <form action="{{ route('modal.destroy', $m->id) }}" method="POST">
+                    <form action="{{ route('modal.destroy', $m->id) }}" method="POST" data-confirm-delete="true">
                         @method('DELETE')
                         @csrf
                         <a href="modal/{{ $m['id'] }}/edit" class="btn btn-info btn-sm"><svg

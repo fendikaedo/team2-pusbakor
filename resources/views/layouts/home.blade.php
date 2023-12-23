@@ -19,7 +19,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo-pusbakor.jpg') }}">
     <title>
         PUSBAKOR
     </title>
@@ -44,15 +44,17 @@
 </head>
 
 <body class="g-sidenav-show bg-gradient-light">
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
     <aside
         class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
         id="sidenav-main">
-        <div class="sidenav-header">
-            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-                aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href="#" target="_blank">
-                <span class="ms-1 font-weight-bold text-white">Logo Pusbakor</span>
-            </a>
+        <div class="sidenav-header m-3">
+                <div class="card shadow bg-gradient-success">
+                    <a class="navbar-brand m-0" href="#" target="_blank">
+                        <img src="/img/logo-pusbakor.jpg"class="img-fluid rounded mx-auto d-block navbar-brand-img h-100 border-radius-lg"
+                            alt="main_logo">
+                    </a>
+                </div>
         </div>
         <div class="w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
@@ -463,26 +465,6 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    @if (session('success'))
-                        <!-- Modal -->
-                        <div class="modal fade" id="successLogin" tabindex="-1" aria-labelledby="modalLogin"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Login Successfully</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>{{ session('success') }}</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-dark"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
 
                     <div class="card mb-4 shadow bg-gradient-dark text-white">
                         <div class="card-header pb-0 bg-transparent text-white">

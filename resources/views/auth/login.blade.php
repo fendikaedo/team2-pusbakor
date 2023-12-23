@@ -15,7 +15,7 @@
                                 <form role="form" method="POST" action="{{ route('login') }}">
                                     @csrf
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
+                                        <div class="alert alert-danger text-white">
                                             {{ implode('', $errors->all('Email atau Password salah')) }}
                                         </div>
                                     @endif

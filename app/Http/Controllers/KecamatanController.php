@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
@@ -41,9 +41,14 @@ class KecamatanController extends Controller
         if ($request) {
             $kecamatan = new Kecamatan();
             $kecamatan->nama_kecamatan = $request->nama_kecamatan;
-            $kecamatan->save();
+            if ($kecamatan->save()) {
+                Alert::success('Success', 'Data Kecamatan Berhasil Ditambahkan!');
+                return redirect()->route('kecamatan.index');
+            } else {
+                Alert::warning('Failed', 'Data Kecamatan Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('kecamatan.index')->with('success', 'Kecamatan Berhasil Ditambahkan');
     }
 
     /**
@@ -75,9 +80,14 @@ class KecamatanController extends Controller
         if ($request) {
             $kecamatan = Kecamatan::find($id);
             $kecamatan->nama_kecamatan = $request->nama_kecamatan;
-            $kecamatan->save();
+            if ($kecamatan->save()) {
+                Alert::success('Success', 'Data Kecamatan Berhasil Dirubah!');
+                return redirect()->route('kecamatan.index');
+            } else {
+                Alert::warning('Failed', 'Data Kecamatan Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('kecamatan.index')->with('success', 'Kecamatan Berhasil Dirubah');
     }
 
     /**
@@ -87,7 +97,7 @@ class KecamatanController extends Controller
     {
         $kecamatan = Kecamatan::find($id);
         $kecamatan->delete();
-
-        return back()->with('success','Kecamatan Berhasil Dihapus');
+        Alert::success('Success', 'Data Kecamatan Berhasil Dihapus!');
+        return back();
     }
 }

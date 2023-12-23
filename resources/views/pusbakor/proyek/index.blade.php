@@ -55,7 +55,7 @@
                 <td>{{ $pro->desa->nama_desa }}</td>
                 <td class="text-start">{{ $pro->kbli->judul }}</td>
                 <td>
-                    <form action="{{ route('proyek.destroy', $pro->id) }}" method="POST">
+                    <form action="{{ route('proyek.destroy', $pro->id) }}" data-confirm-delete="true" method="POST">
                         @method('DELETE')
                         @csrf
                         <a href="proyek/{{ $pro['id'] }}/edit" class="btn btn-info btn-sm"><svg

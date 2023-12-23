@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Jenis_Perusahaan;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
@@ -14,11 +15,11 @@ class PerusahaanController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $perusahaan = Perusahaan::where('nama_perusahaan','LIKE','%' .$request->search.'%')->paginate(10);
-        }else{
+            $perusahaan = Perusahaan::where('nama_perusahaan', 'LIKE', '%' . $request->search . '%')->paginate(10);
+        } else {
             $perusahaan = Perusahaan::paginate(10);
         }
-        return view('pusbakor.perusahaan.index',compact('perusahaan'));
+        return view('pusbakor.perusahaan.index', compact('perusahaan'));
     }
 
     /**
@@ -50,12 +51,14 @@ class PerusahaanController extends Controller
             $perusahaan->nama_perusahaan = $request->nama_perusahaan;
             $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
             if ($perusahaan->save()) {
-                return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Ditambahkan');
+                Alert::success('Success', 'Data Perusahaan Berhasil Ditambahkan!');
+                return redirect()->route('perusahaan.index');
             } else {
-                return back()->with('error', 'Gagal Menambahkan Perusahaan');
+                Alert::warning('Failed', 'Data Perusahaan Gagal Ditambahkan!');
+                return back();
             }
+        }
     }
-}
 
     /**
      * Display the specified resource.
@@ -95,12 +98,14 @@ class PerusahaanController extends Controller
             $perusahaan->jenis_perusahaan_id = $request->jenis_perusahaan_id;
             $perusahaan->save();
             if ($perusahaan->save()) {
-                return redirect()->route('perusahaan.index')->with('success', 'Perusahaan Berhasil Dirubah');
+                Alert::success('Success', 'Data Perusahaan Berhasil Dirubah!');
+                return redirect()->route('perusahaan.index');
             } else {
-                return back()->with('error', 'Gagal Menambahkan Perusahaan');
+                Alert::warning('Failed', 'Data Perusahaan Gagal Dirubah!');
+                return back();
             }
+        }
     }
-}
 
 
     /**
@@ -110,7 +115,8 @@ class PerusahaanController extends Controller
     {
         $perusahaan = Perusahaan::find($id);
         $perusahaan->delete();
+        Alert::success('Success', 'Data Perusahaan Berhasil Dihapus!');
 
-        return back()->with('success', 'Perusahaan Berhasil Dihapus');
+        return back();
     }
 }

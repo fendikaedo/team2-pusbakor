@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Modal;
 use Illuminate\Http\Request;
 
@@ -37,9 +39,14 @@ class ModalController extends Controller
         if ($request) {
             $modal = new Modal();
             $modal->status_modal = $request->status_modal;
-            $modal->save();
+            if ($modal->save()) {
+                Alert::success('Success', 'Data Modal Berhasil Ditambahkan!');
+                return redirect()->route('modal.index');
+            } else {
+                Alert::warning('Failed', 'Data Modal Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('modal.index')->with('success', 'Status Modal Berhasil Ditambahkan');
     }
 
     /**
@@ -71,9 +78,14 @@ class ModalController extends Controller
         if ($request) {
             $modal = Modal::find($id);
             $modal->status_modal = $request->status_modal;
-            $modal->save();
+            if ($modal->save()) {
+                Alert::success('Success', 'Data Modal Berhasil Dirubah!');
+                return redirect()->route('modal.index');
+            } else {
+                Alert::warning('Failed', 'Data Modal Gagal Dirubah!');
+                return back();
+            }
         }
-        return redirect()->route('modal.index')->with('success', 'Status Modal Berhasil Dirubah');
     }
 
     /**
@@ -83,7 +95,7 @@ class ModalController extends Controller
     {
         $modal = Modal::find($id);
         $modal->delete();
-
-        return back()->with('success','Status Modal Berhasil Dihapus');
+        Alert::success('Success', 'Data Modal Berhasil Dihapus');
+        return back();
     }
 }

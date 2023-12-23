@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -29,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -64,10 +67,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if ($user->wasRecentlyCreated) {
+            $user->update(['role' => 'user']);
+            Alert::success('Sign Up Success', 'Akun anda sudah terdaftar di Website PUSBAKOR');
+            return $user;
+        } else {
+            Alert::error('Sign Up Failed', 'Akun Gagal terdaftar di Website PUSBAKOR');
+            return null;
+        }
     }
 }

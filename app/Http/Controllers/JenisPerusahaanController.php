@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Jenis_Perusahaan;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,15 @@ class JenisPerusahaanController extends Controller
         if ($request) {
             $jenis_perusahaan = new Jenis_Perusahaan();
             $jenis_perusahaan->jenis_perusahaan = $request->jenis_perusahaan;
-            $jenis_perusahaan->save();
+            if ($jenis_perusahaan->save()) {
+                Alert::success('Success', 'Data Jenis Perusahaan Berhasil Ditambahkan!');
+                return redirect()->route('jenis_perusahaan.index');
+            } else {
+                Alert::warning('Failed', 'Data Jenis Perusahaan Gagal Ditambahkan!');
+                return back();
+            }
         }
-        return redirect()->route('jenis_perusahaan.index')->with('success', 'Jenis Perusahaan Berhasil Ditambahkan');
+        return redirect()->route('jenis_perusahaan.index');
     }
 
     /**
@@ -69,9 +76,16 @@ class JenisPerusahaanController extends Controller
         if ($request) {
             $jenis_perusahaan = Jenis_Perusahaan::find($id);
             $jenis_perusahaan->jenis_perusahaan = $request->jenis_perusahaan;
-            $jenis_perusahaan->save();
+            if ($jenis_perusahaan->save()) {
+                Alert::success('Success', 'Data Jenis Perusahaan Berhasil Dirubah!');
+                return redirect()->route('jenis_perusahaan.index');
+            } else {
+                Alert::warning('Failed', 'Data Jenis Perusahaan Gagal Dirubah!');
+                return back();
+            }
+
         }
-        return redirect()->route('jenisperusahaan.index')->with('success', 'Jenis Perusahaan Berhasil Dirubah');
+        return redirect()->route('jenis_perusahaan.index');
     }
 
     /**
@@ -80,8 +94,8 @@ class JenisPerusahaanController extends Controller
     public function destroy(string $id)
     {
         $jenis_perusahaan = Jenis_Perusahaan::find($id);
-        $jenis_perusahaan->delete();
-
-        return back()->with('success','Jenis Perusahaan Berhasil Dihapus');
+        $jenis_perusahaan->delete($id);
+        Alert::success('Success', 'Data Jenis Perusahaan Berhasil Dihapus!');
+        return back();
     }
 }
