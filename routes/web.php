@@ -13,6 +13,7 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DesaController;
 use App\Http\Controllers\JenisPerusahaanController;
 use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\AdminController;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,7 @@ Route::middleware(['auth', 'guest:user'])->group(function () {
 Route::middleware(['auth','guest:admin'])->group(function () {
     Route::get('/profile/{id}', [ProfileController::class, 'show']);
     Route::resource('profile', ProfileController::class);
+    Route::resource('admin', AdminController::class);
     Route::resource('dashboard', DashboardController::class);
     Route::resource('tables', LayoutController::class);
     Route::resource('proyek', ProyekController::class);

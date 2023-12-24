@@ -67,6 +67,15 @@
                         <span class="ms-1 text-white font-weight-bold">Dashboard</span>
                     </a>
                 </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link bg-gradient-info active" href="{{ route('admin.index') }}">
+                        <div
+                            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-air-baloon"></i>
+                        </div>
+                        <span class="ms-1 text-white font-weight-bold">Admin</span>
+                    </a>
+                </li>
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6 text-white">Master</h6>
                 </li>
