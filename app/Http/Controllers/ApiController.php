@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Jenis_Perusahaan;
 use App\Models\Proyek;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
@@ -8,9 +10,11 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     public function index(){
+        $jenis_perusahaan = Jenis_Perusahaan::all();
         $proyek = Proyek::all();
         return response()->json([
             'proyek' => $proyek,
+            'jenis_perusahaan' => $jenis_perusahaan,
         ]);
     }
     public function store(Request $request){
