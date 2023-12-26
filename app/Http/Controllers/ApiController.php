@@ -3,16 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jenis_Perusahaan;
+use App\Models\Resiko;
+use App\Models\Kecamatan;
+use App\Models\Desa;
+use App\Models\Kbli;
+use App\Models\Modal;
+use App\Models\Perusahaan;
 use App\Models\Proyek;
+use App\Models\Skala_Usaha;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
     public function index(){
+        $perusahaan = Perusahaan::all();
+        $kecamatan = Kecamatan::all();
+        $skala_usaha = Skala_Usaha::all();
+        $kbli = Kbli::all();
+        $desa = Desa::all();
+        $resiko = Resiko::all();
+        $modal = Modal::all();
         $jenis_perusahaan = Jenis_Perusahaan::all();
         $proyek = Proyek::all();
         return response()->json([
+            'perusahaan' => $perusahaan,
+            'kecamatan' => $kecamatan,
+            'skalausaha' => $skala_usaha,
+            'kbli' => $kbli,
+            'desa' => $desa,
+            'resiko' => $resiko,
+            'modal' => $modal,
             'proyek' => $proyek,
             'jenis_perusahaan' => $jenis_perusahaan,
         ]);
