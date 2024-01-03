@@ -27,7 +27,7 @@ class ApiController extends Controller
         $resiko = Resiko::all();
         $modal = Modal::all();
         $jenis_perusahaan = Jenis_Perusahaan::all();
-        $proyek = Proyek::all();
+        //$proyek = Proyek::all();
         $table_data_perusahaan = Perusahaan::with('jenis_perusahaan')->get();
         $table_data_proyek = Proyek::with('perusahaan','modal','resiko','skala_usaha','kbli','kecamatan','desa')->get();
         return response()->json([
@@ -39,7 +39,7 @@ class ApiController extends Controller
             'desa' => $desa,
             'resiko' => $resiko,
             'modal' => $modal,
-            'proyek' => $proyek,
+            //'proyek' => $proyek,
             'jenis_perusahaan' => $jenis_perusahaan,
             'table_data_perusahaan' => $table_data_perusahaan,
             'table_data_proyek' => $table_data_proyek,

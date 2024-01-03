@@ -6,6 +6,10 @@ use App\Http\Controllers\Auth;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,30 @@ use App\Http\Controllers\Auth\LoginController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::middleware(['auth:sanctum'])->get('/user/revoke',function (Request $request) {
+    $user = $request->user();
+    $user->tokens()->delete();
+    return 'Tokens are deleted';
+});
+
+Route::post('/sanctum/token', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (! $user || ! Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+
+    return $user->createToken($request->device_name)->plainTextToken;
+});
+
 Route::resource('profile', ApiController::class);
 Route::resource('dashboard', ApiController::class);
 Route::resource('tables', ApiController::class);
